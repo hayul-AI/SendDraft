@@ -337,6 +337,10 @@ function sd_init() {
     a.service = i || ref || t;
     a.merchant = r;
     a.holder = n;
+    a.client = r || src.company || "";
+    a.landlord = r || src.company || "";
+    a.client = r;
+    a.landlord = r;
 
     a.amount_str = am ? ` for ${am}` : "";
     a.total_str = am ? ` totaling ${am}` : "";
