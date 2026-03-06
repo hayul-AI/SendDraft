@@ -4,11 +4,11 @@
   function renderField(f) {
     const id = "f_" + f.key;
     const isRequired = f.required || (window.TOOL_CONFIG && window.TOOL_CONFIG.requiredFields && window.TOOL_CONFIG.requiredFields.includes(f.key));
-    const asterisk = isRequired ? ' <span class="sd-required" aria-hidden="true">*</span>' : '';
+    const requiredMark = isRequired ? ' <span class="sd-required-dot" aria-hidden="true"></span>' : '';
 
     let base =
       '<div class="field">' +
-      '<label for="' + id + '">' + esc(f.label) + asterisk + '</label>';
+      '<label for="' + id + '">' + esc(f.label) + requiredMark + '</label>';
 
     // Strict amount rendering - only if explicitly typed as 'amount'
     if (f.type === "amount") {
@@ -56,8 +56,8 @@
     const els = document.querySelectorAll(".sd-date:not([data-sd-picker])");
     if (!els.length) return;
     flatpickr(els, {
-      dateFormat: "Y-m-d",
-      allowInput: false,
+      dateFormat: "F j, Y",
+      allowInput: true,
       disableMobile: true,
       onOpen: (s, d, i) => i.element.setAttribute("data-sd-picker", "1")
     });

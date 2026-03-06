@@ -10,6 +10,19 @@ function sd_escape(v) {
   return String(v ?? "").trim();
 }
 
+function formatDateIfPossible(val) {
+  if (!val) return "";
+  // Check if it matches YYYY-MM-DD (standard Flatpickr or ISO format)
+  const match = val.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (match) {
+    const d = new Date(val + 'T12:00:00'); 
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+  }
+  return val;
+}
+
 function cleanGeneratedText(text) {
   let s = text;
   
@@ -168,6 +181,11 @@ function sd_collect(form) {
   form.querySelectorAll("[data-sd-field]").forEach(el => {
     const key = el.getAttribute("data-sd-field");
     let val = el.value;
+
+    // Auto-format dates if they are in YYYY-MM-DD format
+    if (el.classList.contains("sd-date")) {
+      val = formatDateIfPossible(val);
+    }
 
     if (el.classList.contains("sd-amount-input")) {
       const curEl = form.querySelector(`[data-sd-currency="${key}"]`);

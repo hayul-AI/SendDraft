@@ -1157,3 +1157,16 @@ hr.sep {
   color: var(--sub) !important;
   font-weight: 700 !important;
 }
+
+/* Required field dot mark */
+.sd-required-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: #16a34a;
+  border-radius: 50%;
+  margin-left: 6px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
