@@ -238,9 +238,9 @@ I expect a response on this matter by [date]. Thank you for your prompt attentio
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out about handoff message template for {{reference}} ({{date}}).\n\n{{reason}}\n\nI'd appreciate your help with this when you have a moment. `,
-      neutral: `Hello {{company}},\n\nI am writing regarding handoff message template for {{reference}} from {{date}}.\n\n{{reason}}\n\nPlease let me know the current status or next steps.\n\n`,
-      firm: `Hello {{company}},\n\nI am formally contacting you regarding handoff message template for {{reference}} ({{date}}).\n\n{{reason}}\n\nI expect a response on this matter by {{date}}. Thank you for your prompt attention.\n\n`
+      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}I'd appreciate your help with this when you have a moment. `,
+      neutral: `Hello {{company}},\n\nI am writing regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Please let me know the current status or next steps.\n\n`,
+      firm: `Hello {{company}},\n\nI am formally contacting you regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}{{#date}}I expect a response on this matter by {{date}}. {{/date}}Thank you for your prompt attention.\n\n`
     }
   };
   </script>

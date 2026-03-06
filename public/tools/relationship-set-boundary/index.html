@@ -232,9 +232,9 @@ I am contacting you to be clear about set boundaries message regarding [referenc
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}},\n\nI hope you're doing well. I wanted to reach out regarding set boundaries message for {{reference}}.\n\n{{reason}}\n\nThinking of you,\n{{name}}`,
-      neutral: `Hello {{company}},\n\nI am writing about set boundaries message concerning {{reference}}.\n\n{{reason}}\n\n`,
-      firm: `Hello {{company}},\n\nI am contacting you to be clear about set boundaries message regarding {{reference}}.\n\n{{reason}}\n\n`
+      gentle: `Hi {{company}},\n\nI hope you're doing well. I wanted to reach out regarding set boundaries message for {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Thinking of you,\n{{name}}`,
+      neutral: `Hello {{company}},\n\nI am writing about set boundaries message concerning {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}`,
+      firm: `Hello {{company}},\n\nI am contacting you to be clear about set boundaries message regarding {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}`
     }
   };
   </script>

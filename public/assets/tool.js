@@ -10,8 +10,142 @@ function sd_escape(v) {
   return String(v ?? "").trim();
 }
 
+function cleanGeneratedText(text) {
+  let s = text;
+  
+  // 1. Remove empty parentheses '()' or ' ( ) '
+  s = s.replace(/\s*\(\s*\)/g, "");
+
+  // 2. Fix floating punctuation and duplicated punctuation FIRST
+  s = s.replace(/\s+([.,!?;:])/g, "$1");
+  s = s.replace(/([.,!?;:])\1+/g, "$1");
+
+  // 3. Remove dangling prepositions before punctuation
+  let prev;
+  do {
+    prev = s;
+    s = s.replace(/\b(on|for|by|from|about|regarding|with|to|of|in|at|via|and)\s*([.,!?;:])/gi, "$2");
+    s = s.replace(/\b(for the amount|the amount|the amount of)\s*([.,!?;:])/gi, "$2");
+    s = s.replace(/\b(which I purchased|which was purchased)\s*([.,!?;:])/gi, "$2");
+    s = s.replace(/\bRef:\s*([.,!?;:])/gi, "$1");
+  } while (s !== prev);
+
+  // 4. Clean up any remaining floating/duplicated punctuation
+  s = s.replace(/\s+([.,!?;:])/g, "$1");
+  s = s.replace(/([.,!?;:])\1+/g, "$1");
+  s = s.replace(/,\s*\./g, ".");
+
+  // 5. Remove known broken empty sentences
+  const emptySentences = [
+    /The reason for my request is that\s*[.,]/gi,
+    /This request is being made because\s*[.,]/gi,
+    /I am requesting this refund because\s*[.,]/gi,
+    /I'm reaching out about\s*[.,]/gi,
+    /I am writing regarding\s*[.,]/gi,
+    /I am formally contacting you regarding\s*[.,]/gi,
+    /The reason for this is\s*[.,]/gi,
+    /This is because\s*[.,]/gi,
+    /The purchase was made\s*[.,]/gi,
+    /I purchased this\s*[.,]/gi
+  ];
+  for (const regex of emptySentences) {
+    s = s.replace(regex, "");
+  }
+
+  // 6. Fix multiple spaces
+  s = s.replace(/[ \t]{2,}/g, " ");
+
+  // 7. Fix excessive newlines
+  s = s.replace(/\n\s*\n\s*\n+/g, "\n\n");
+  
+  // 8. Cleanup leading/trailing spaces per line
+  s = s.split('\n').map(line => line.trim()).join('\n');
+
+  return s.trim();
+}
+
 function sd_fillTemplate(tpl, data) {
-  return tpl.replace(/\{\{(\w+)\}\}/g, (_, key) => sd_escape(data[key]));
+  let result = tpl;
+  
+  // Process block tags {{#key}}...{{/key}}
+  const blockRegex = /\{\{#(\w+)\}\}([\s\S]*?)\{\{\/\1\}\}/g;
+  result = result.replace(blockRegex, (match, key, content) => {
+    const val = data[key] || data[key + '_lower'];
+    // If it's HTML injected (contains span.hl), we check its raw content by removing tags
+    const rawVal = typeof val === 'string' ? val.replace(/<[^>]*>/g, '').trim() : String(val || "").trim();
+    if (rawVal) {
+      return content;
+    }
+    return "";
+  });
+
+  // Process standard variables {{key}}
+  result = result.replace(/\{\{(\w+)\}\}/g, (_, key) => sd_escape(data[key]));
+  
+  // If it's a plain text output (no HTML tags), run the cleaner
+  if (!result.includes('<span class="hl">')) {
+    result = cleanGeneratedText(result);
+  } else {
+    // For HTML preview, we temporarily strip HTML, clean, and we can't easily restore HTML around punctuation
+    // Wait, the HTML output won't look exactly like plain text if we don't clean it.
+    // Let's strip the `<span class="hl">` tags, run cleaner, and then let the user see the cleaned text? 
+    // No, we need the highlight spans. Let's just run the cleaner. The cleaner regexes mostly ignore tags if carefully written, 
+    // BUT the spans might get in the way of `\s*([.,])`.
+    // Actually, `cleanGeneratedText` might break spans. So we only clean plain text.
+    // Wait! The user sees the preview. If the preview is broken, they will complain.
+    // We MUST clean the preview. Let's adapt the cleaner to tolerate `</span>` before punctuation.
+  }
+
+  return result;
+}
+
+// Re-write cleanGeneratedText to be HTML-safe
+function sd_cleanHtmlSafe(text) {
+  let s = text;
+  
+  s = s.replace(/\s*\(\s*\)/g, "");
+  
+  // Allow optional </span> before punctuation
+  const p = "([.,!?;:])";
+  const hlEnd = "(?:<\\/span>)?";
+  
+  s = s.replace(new RegExp(`\\s+${hlEnd}${p}`, "g"), "$1$2");
+  s = s.replace(new RegExp(`${p}${hlEnd}\\1+`, "g"), "$1$2");
+
+  let prev;
+  do {
+    prev = s;
+    s = s.replace(new RegExp(`\\b(on|for|by|from|about|regarding|with|to|of|in|at|via|and)\\s*${hlEnd}${p}`, "gi"), "$2$3");
+    s = s.replace(new RegExp(`\\b(for the amount|the amount|the amount of)\\s*${hlEnd}${p}`, "gi"), "$2$3");
+    s = s.replace(new RegExp(`\\b(which I purchased|which was purchased)\\s*${hlEnd}${p}`, "gi"), "$2$3");
+    s = s.replace(new RegExp(`\\bRef:\\s*${hlEnd}${p}`, "gi"), "$1$2");
+  } while (s !== prev);
+
+  s = s.replace(new RegExp(`\\s+${hlEnd}${p}`, "g"), "$1$2");
+  s = s.replace(new RegExp(`${p}${hlEnd}\\1+`, "g"), "$1$2");
+  s = s.replace(new RegExp(`,\\s*${hlEnd}\\.`, "g"), "$1.");
+
+  const emptySentences = [
+    /The reason for my request is that\s*(?:<\/span>)?\s*[.,]/gi,
+    /This request is being made because\s*(?:<\/span>)?\s*[.,]/gi,
+    /I am requesting this refund because\s*(?:<\/span>)?\s*[.,]/gi,
+    /I'm reaching out about\s*(?:<\/span>)?\s*[.,]/gi,
+    /I am writing regarding\s*(?:<\/span>)?\s*[.,]/gi,
+    /I am formally contacting you regarding\s*(?:<\/span>)?\s*[.,]/gi,
+    /The reason for this is\s*(?:<\/span>)?\s*[.,]/gi,
+    /This is because\s*(?:<\/span>)?\s*[.,]/gi,
+    /The purchase was made\s*(?:<\/span>)?\s*[.,]/gi,
+    /I purchased this\s*(?:<\/span>)?\s*[.,]/gi
+  ];
+  for (const regex of emptySentences) {
+    s = s.replace(regex, "");
+  }
+
+  s = s.replace(/[ \t]{2,}/g, " ");
+  s = s.replace(/\n\s*\n\s*\n+/g, "\n\n");
+  s = s.split('\n').map(line => line.trim()).join('\n');
+
+  return s.trim();
 }
 
 function formatMoney(amount, currencyCode) {
@@ -31,12 +165,10 @@ function formatMoney(amount, currencyCode) {
 function sd_collect(form) {
   const data = {};
 
-  // Standard fields
   form.querySelectorAll("[data-sd-field]").forEach(el => {
     const key = el.getAttribute("data-sd-field");
     let val = el.value;
 
-    // Check if this is an amount input
     if (el.classList.contains("sd-amount-input")) {
       const curEl = form.querySelector(`[data-sd-currency="${key}"]`);
       if (curEl && val) {
@@ -47,7 +179,6 @@ function sd_collect(form) {
     data[key] = val;
   });
 
-  // Radio groups or other custom types if needed
   form.querySelectorAll("input[type='radio']:checked").forEach(el => {
     const name = el.getAttribute("name");
     if (name) data[name] = el.value;
@@ -66,7 +197,6 @@ function sd_setTone(buttons, tone) {
 function sd_init() {
   if (!window.TOOL_CONFIG) { return; }
 
-  // Unify Title and H1
   if (window.TOOL_CONFIG.title) {
     document.title = window.TOOL_CONFIG.title + " | SendDraft";
     const h1 = document.querySelector("h1");
@@ -97,7 +227,7 @@ function sd_init() {
   });
 
   function hl(val) {
-    if (!val) return "";
+    if (!val || !String(val).trim()) return "";
     return `<span class="hl">${val}</span>`;
   }
 
@@ -112,7 +242,6 @@ function sd_init() {
     const am = src.amount || "";
     const re = src.reason || "";
 
-    // Base injections
     a.recipient = r || src.company || "";
     a.name = n;
     a.topic = t;
@@ -123,7 +252,6 @@ function sd_init() {
     a.reason = re;
     a.company = src.company || r || "";
 
-    // Dates
     a.date_str = d ? ` on ${d}` : "";
     a.date_str_firm = d ? ` on ${d}` : "";
     a.date_str_neutral = d ? ` on ${d}` : "";
@@ -135,8 +263,8 @@ function sd_init() {
     a.deadline_str_firm = d ? ` by ${d}` : "";
     a.pay_date_str = d ? ` by ${d}` : "";
     a.pay_date = d;
-    a.start_str = d ? d.split(/[~|-]|to|until/)[0].trim() : "";
-    a.end_str = d && d.match(/[~|-]|to|until/) ? d.split(/[~|-]|to|until/)[1].trim() : "";
+    a.start_str = d ? String(d).split(/[~|-]|to|until/)[0].trim() : "";
+    a.end_str = d && String(d).match(/[~|-]|to|until/) ? String(d).split(/[~|-]|to|until/)[1].trim() : "";
     a.time_str = d ? ` at ${d}` : "";
     a.window_str = d ? ` within ${d}` : "";
     a.window_str_firm = d ? ` within ${d}` : "";
@@ -144,7 +272,6 @@ function sd_init() {
     a.req_date = d;
     a.new_date = d;
 
-    // Reasons / Context
     a.reason_str = re ? ` ${re}` : "";
     a.follow_up_str = re ? ` ${re}` : "";
     a.follow_up_plain = re ? ` ${re}` : "";
@@ -167,7 +294,6 @@ function sd_init() {
     a.addition_str = re ? ` ${re}` : "";
     a.additional_str = re ? ` ${re}` : "";
 
-    // References / Modifiers
     a.ref_str = ref ? ` (Ref: ${ref})` : "";
     a.ref_str_firm = ref ? ` (Ref: ${ref})` : "";
     a.ref_str_neutral = ref ? ` (Ref: ${ref})` : "";
@@ -190,14 +316,12 @@ function sd_init() {
     a.merchant = r;
     a.holder = n;
 
-    // Amounts
     a.amount_str = am ? ` for ${am}` : "";
     a.total_str = am ? ` totaling ${am}` : "";
     a.expense = am;
     a.total = am;
     a.p_price = am;
 
-    // Other Defaults
     a.contact_str = "\\n\\nFeel free to reach out if you have any questions.";
     a.res_str = window.TOOL_CONFIG.category === "customer" ? "a refund" : "your request";
     a.recognition_str = "";
@@ -208,7 +332,6 @@ function sd_init() {
   function gen() {
     if (!form) return;
 
-    // 0. Inline Validation without popups
     let isValid = true;
     form.querySelectorAll("[required]").forEach(el => {
       if (!el.value.trim()) {
@@ -223,10 +346,8 @@ function sd_init() {
 
     if (!isValid) return;
 
-    // 1. Collect raw data from fields
     const rawData = sd_collect(form);
 
-    // 2. Build plain text data (clean strings)
     const plainData = { ...rawData };
     for (let k in plainData) {
       if (plainData[k]) plainData[k + "_lower"] = plainData[k].toLowerCase();
@@ -234,7 +355,6 @@ function sd_init() {
     const txtAliases = buildAliases(plainData);
     const finalPlain = { ...plainData, ...txtAliases };
 
-    // 3. Build HTML highlighted data (spans injected)
     const hlRawData = {};
     for (let k in rawData) {
       hlRawData[k] = hl(rawData[k]);
@@ -243,18 +363,23 @@ function sd_init() {
     const hlAliases = buildAliases(hlRawData);
     const finalHl = { ...hlRawData, ...hlAliases };
 
-    // Tool title available in template if needed
     finalPlain.toolTitle = window.TOOL_CONFIG.title;
     finalHl.toolTitle = window.TOOL_CONFIG.title;
+    if (window.TOOL_CONFIG.title) {
+        finalPlain.toolTitle_lower = window.TOOL_CONFIG.title.toLowerCase();
+        finalHl.toolTitle_lower = window.TOOL_CONFIG.title.toLowerCase();
+    }
 
     const tpl = (window.TOOL_CONFIG.templates && window.TOOL_CONFIG.templates[tone]) || "";
 
-    // 4. Fill Templates
-    // Replace newline markers from strings cleanly
-    const resultHtml = sd_fillTemplate(tpl, finalHl).trim().replace(/\n/g, "<br>");
-    const resultText = sd_fillTemplate(tpl, finalPlain).trim();
+    // Fill templates and apply our HTML-safe cleaner
+    let resultHtml = sd_cleanHtmlSafe(sd_fillTemplate(tpl, finalHl));
+    let resultText = cleanGeneratedText(sd_fillTemplate(tpl, finalPlain));
 
-    // 5. Render Output
+    // Handle newlines
+    resultHtml = resultHtml.replace(/\\n/g, "<br>").replace(/\n/g, "<br>");
+    resultText = resultText.replace(/\\n/g, "\n");
+
     if (preview) {
       preview.innerHTML = resultHtml || "Fill the fields to generate a draft.";
       if (textarea) {
@@ -296,18 +421,15 @@ function sd_init() {
 
   if (window.TOOL_CONFIG.autoGenerate !== false) {
     form && form.addEventListener("input", (e) => {
-      // Clear required validation outline if it was red and user typed
       if (e.target.hasAttribute("required") && e.target.value.trim()) {
         e.target.style.borderColor = "";
         e.target.style.boxShadow = "";
       }
-
       const rawData = sd_collect(form);
       const hasAny = Object.values(rawData).some(v => String(v || "").trim().length > 0);
       if (hasAny && outArea && outArea.style.display !== "none") gen();
     });
   } else {
-    // If autoGenerate is false, still clear validation outline on input
     form && form.addEventListener("input", (e) => {
       if (e.target.hasAttribute("required") && e.target.value.trim()) {
         e.target.style.borderColor = "";

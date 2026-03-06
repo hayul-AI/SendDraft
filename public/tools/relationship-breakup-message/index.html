@@ -232,9 +232,9 @@ I am contacting you to be clear about breakup message regarding [reference].
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}},\n\nI hope you're doing well. I wanted to reach out regarding breakup message for {{reference}}.\n\n{{reason}}\n\nThinking of you,\n{{name}}`,
-      neutral: `Hello {{company}},\n\nI am writing about breakup message concerning {{reference}}.\n\n{{reason}}\n\n`,
-      firm: `Hello {{company}},\n\nI am contacting you to be clear about breakup message regarding {{reference}}.\n\n{{reason}}\n\n`
+      gentle: `Hi {{company}},\n\nI hope you're doing well. I wanted to reach out regarding breakup message for {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Thinking of you,\n{{name}}`,
+      neutral: `Hello {{company}},\n\nI am writing about breakup message concerning {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}`,
+      firm: `Hello {{company}},\n\nI am contacting you to be clear about breakup message regarding {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}`
     }
   };
   </script>
