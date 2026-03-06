@@ -4,7 +4,7 @@
   function renderField(f) {
     const id = "f_" + f.key;
     const isRequired = f.required || (window.TOOL_CONFIG && window.TOOL_CONFIG.requiredFields && window.TOOL_CONFIG.requiredFields.includes(f.key));
-    const requiredMark = isRequired ? ' <span class="sd-required-dot" aria-hidden="true"></span>' : '';
+    const requiredMark = isRequired ? '\n<span class="required-dot"></span>' : '';
 
     let base =
       '<div class="field">' +

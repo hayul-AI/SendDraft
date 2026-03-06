@@ -1014,12 +1014,21 @@ hr.sep {
 }
 
 /* Global UI Enhancements */
-.sd-required {
-  color: var(--green, #16a34a);
-  font-size: 0.85em;
-  font-weight: 700;
+.required-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
   margin-left: 6px;
-  vertical-align: text-top;
+  border-radius: 50%;
+  background: #16a34a;
+  vertical-align: middle;
+}
+
+/* Required field input styling */
+input[required],
+textarea[required],
+select[required] {
+  border-color: #16a34a !important;
 }
 
 .hl {
@@ -1029,144 +1038,4 @@ hr.sep {
   border-radius: 6px;
   font-weight: 600;
   border: 1px solid #bbf7d0;
-}
-
-.sd-editbox {
-  width: 100% !important;
-  min-height: 220px !important;
-  box-sizing: border-box;
-  padding: 16px 18px !important;
-  font-size: 1rem !important;
-  line-height: 1.6 !important;
-  resize: vertical;
-  background: #fff !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 12px !important;
-  font-family: inherit;
-  color: var(--text);
-}
-
-.sd-editbox:focus {
-  border-color: var(--green) !important;
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15) !important;
-  outline: none;
-}
-
-/* Global Input Systems: Date & Amount */
-.sd-amount-group {
-  display: flex;
-  gap: 0;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fafafa;
-  transition: all 0.2s ease;
-}
-
-.sd-amount-group:focus-within {
-  background: #fff;
-  border-color: var(--green);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
-}
-
-.sd-currency-select {
-  border: none !important;
-  border-right: 1px solid var(--border) !important;
-  border-radius: 0 !important;
-  width: 85px !important;
-  padding: 0 8px 0 12px !important;
-  font-size: 13px !important;
-  font-weight: 700 !important;
-  background: #f3f4f6 !important;
-  cursor: pointer;
-  color: var(--text) !important;
-  box-shadow: none !important;
-}
-
-.sd-amount-input {
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 12px 16px !important;
-  background: transparent !important;
-  flex: 1;
-  box-shadow: none !important;
-}
-
-/* Flatpickr White + Green Theme */
-.flatpickr-calendar {
-  background: #fff;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  font-family: inherit;
-}
-
-.flatpickr-day.selected,
-.flatpickr-day.startRange,
-.flatpickr-day.endRange,
-.flatpickr-day.selected.inRange,
-.flatpickr-day.startRange.inRange,
-.flatpickr-day.endRange.inRange,
-.flatpickr-day.selected:focus,
-.flatpickr-day.startRange:focus,
-.flatpickr-day.endRange:focus,
-.flatpickr-day.selected:hover,
-.flatpickr-day.startRange:hover,
-.flatpickr-day.endRange:hover,
-.flatpickr-day.selected.prevMonthDay,
-.flatpickr-day.startRange.prevMonthDay,
-.flatpickr-day.endRange.prevMonthDay,
-.flatpickr-day.selected.nextMonthDay,
-.flatpickr-day.startRange.nextMonthDay,
-.flatpickr-day.endRange.nextMonthDay {
-  background: var(--green) !important;
-  border-color: var(--green) !important;
-  color: #fff !important;
-}
-
-.flatpickr-day:hover {
-  background: var(--green-soft) !important;
-  border-color: var(--green-soft) !important;
-}
-
-.flatpickr-time input:hover,
-.flatpickr-time .flatpickr-am-pm:hover,
-.flatpickr-time input:focus,
-.flatpickr-time .flatpickr-am-pm:focus {
-  background: var(--green-soft) !important;
-}
-
-.flatpickr-time .numInputWrapper span.arrowUp:after {
-  border-bottom-color: var(--green) !important;
-}
-
-.flatpickr-time .numInputWrapper span.arrowDown:after {
-  border-top-color: var(--green) !important;
-}
-
-.flatpickr-months .flatpickr-month {
-  color: var(--text) !important;
-  fill: var(--text) !important;
-}
-
-.flatpickr-current-month .flatpickr-monthDropdown-months:hover {
-  background: var(--soft) !important;
-}
-
-.flatpickr-weekday {
-  color: var(--sub) !important;
-  font-weight: 700 !important;
-}
-
-/* Required field dot mark */
-.sd-required-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  background-color: #16a34a;
-  border-radius: 50%;
-  margin-left: 6px;
-  vertical-align: middle;
-  position: relative;
-  top: -1px;
 }
