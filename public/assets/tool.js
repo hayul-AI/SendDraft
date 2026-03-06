@@ -242,11 +242,12 @@ function sd_init() {
     const am = src.amount || "";
     const re = src.reason || "";
 
+    // Base injections with fallbacks
     a.recipient = r || src.company || "";
     a.name = n;
-    a.topic = t;
-    a.item = i || ref || "";
-    a.reference = ref;
+    a.topic = t || ref || "";
+    a.item = i || ref || t || "";
+    a.reference = ref || t || i || "";
     a.date = d;
     a.amount = am;
     a.reason = re;
