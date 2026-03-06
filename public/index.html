@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SendDraft — The Right Words, When You Need Them</title>
+  <meta name="description"
+    content="SendDraft helps you find the right words with ready-to-send message and message templates for real-life situations. Generate professional drafts in seconds." />
+  <link rel="canonical" href="/" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <style>
+    .cat-section {
+      margin-bottom: 48px;
+      scroll-margin-top: 100px;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .tool-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    a.tool-card:hover {
+      border-color: var(--green);
+      color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px -3px rgba(0, 0, 0, 0.05);
+    }
+
+    .tool-card.disabled {
+      background: #f9fafb;
+      color: var(--sub);
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .badge-soon {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      background: #e5e7eb;
+      color: var(--sub);
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/" style="font-size: 30px; font-weight: 800;">
+        <div class="logo" aria-hidden="true">
+          <svg width="38" height="38" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L19 9L12 22L5 9L12 2Z" fill="#16a34a" />
+            <path d="M9.5 9H14.5L12 16L9.5 9Z" fill="#ffffff" />
+          </svg>
+        </div>
+        <span>SendDraft</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/about/">About</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="/contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="top"></div>
+    <section class="hero">
+      <h1>Not sure how to write your message?</h1>
+      <p style="color: var(--green); font-weight: 500;">SendDraft helps you send clear, professional messages in
+        seconds.</p>
+
+      <div class="card" style="margin-top:32px; padding:28px; position:relative;">
+        <h2 class="section-title">What do you need to send?</h2>
+        <div style="display:flex; gap:12px; margin-bottom:12px">
+          <div style="flex:1; position:relative;">
+            <input type="text" data-home-search placeholder="Search templates (e.g. refund, invoice, landlord...)"
+              style="width:100%; border:1px solid var(--border); border-radius:12px; padding:14px 18px; font-size:16px; background:#fafafa; outline:none; transition: all 0.2s ease;">
+            <div data-home-results
+              style="display:none; position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid var(--border); border-radius:12px; margin-top:8px; box-shadow:var(--shadow); z-index:50; overflow:hidden;">
+            </div>
+          </div>
+          <button class="btn" style="padding:0 16px">Search</button>
+        </div>
+        <div class="home-search__hint">
+          <span class="home-search__hint-text" style="padding-top:10px">Jump to:</span>
+          <div class="home-search__chips" style="gap:10px; margin-top:4px;">
+            <a href="#work" class="chip-btn" style="text-decoration:none">Work & Office</a>
+            <a href="#freelance" class="chip-btn" style="text-decoration:none">Business & Freelance</a>
+            <a href="#sales" class="chip-btn" style="text-decoration:none">Sales & Outreach</a>
+            <a href="#hr" class="chip-btn" style="text-decoration:none">Jobs & HR</a>
+            <a href="#customer" class="chip-btn" style="text-decoration:none">Customer Support</a>
+            <a href="#billing" class="chip-btn" style="text-decoration:none">Invoices & Billing</a>
+            <a href="#banking" class="chip-btn" style="text-decoration:none">Banking & Finance</a>
+            <a href="#housing" class="chip-btn" style="text-decoration:none">Housing & Living</a>
+            <a href="#travel" class="chip-btn" style="text-decoration:none">Travel & Booking</a>
+            <a href="#education" class="chip-btn" style="text-decoration:none">School & University</a>
+            <a href="#tech-support" class="chip-btn" style="text-decoration:none">Accounts & Tech</a>
+            <a href="#notices" class="chip-btn" style="text-decoration:none">Contracts & Formal</a>
+            <a href="#relationships" class="chip-btn" style="text-decoration:none">Personal Messages</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="margin-bottom:64px">
+
+      <!-- Work & Office -->
+      <div class="cat-section" id="work">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Work & Office</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Follow-ups, scheduling, status updates, boundaries.
+        </p>
+        <div class="tools-grid">
+          <a href="/tools/work-follow-up-no-response/" class="tool-card">Follow-up Message (No Response)
+            <span>→</span></a>
+          <a href="/tools/work-second-follow-up/" class="tool-card">Second Follow-up <span>→</span></a>
+          <a href="/tools/work-meeting-request/" class="tool-card">Meeting Request <span>→</span></a>
+          <a href="/tools/work-reschedule-meeting/" class="tool-card">Reschedule Meeting <span>→</span></a>
+          <a href="/tools/work-mistake-apology/" class="tool-card">Written Apology for Work Mistake <span>→</span></a>
+          <a href="/tools/work-cancel-meeting/" class="tool-card">Cancel Meeting <span>→</span></a>
+          <a href="/tools/work-send-agenda/" class="tool-card">Send Meeting Agenda <span>→</span></a>
+          <a href="/tools/work-interview-thank-you/" class="tool-card">Interview Thank You <span>→</span></a>
+          <a href="/tools/work-interview-reschedule/" class="tool-card">Interview Reschedule <span>→</span></a>
+          <a href="/tools/work-deadline-extension-request/" class="tool-card">Deadline Extension Request
+            <span>→</span></a>
+          <a href="/tools/work-status-update/" class="tool-card">Project Status Update <span>→</span></a>
+          <a href="/tools/work-out-of-office-setup/" class="tool-card">Out of Office Auto-Reply Setup <span>→</span></a>
+          <a href="/tools/work-handoff-transition-note/" class="tool-card">Handoff / Transition Note <span>→</span></a>
+          <a href="/tools/work-request-feedback/" class="tool-card">Request Feedback <span>→</span></a>
+          <a href="/tools/work-clarify-requirements/" class="tool-card">Clarify Requirements <span>→</span></a>
+          <a href="/tools/work-say-no-politely/" class="tool-card">Say No Politely (Work) <span>→</span></a>
+          <a href="/tools/work-boundary-after-hours/" class="tool-card">After-hours Boundary <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Jobs & HR -->
+      <div class="cat-section" id="hr">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Jobs & HR</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Job hunting, interview, offers, resignation,
+          referrals.</p>
+        <div class="tools-grid">
+          <a href="/tools/hr-interview-invitation/" class="tool-card">Interview Invitation <span>→</span></a>
+          <a href="/tools/hr-job-offer-email/" class="tool-card">Job Offer <span>→</span></a>
+          <a href="/tools/hr-rejection-after-interview/" class="tool-card">Job Rejection (Post-Interview)
+            <span>→</span></a>
+          <a href="/tools/hr-pto-request/" class="tool-card">Time Off Request <span>→</span></a>
+          <a href="/tools/hr-resignation-letter/" class="tool-card">Resignation Letter <span>→</span></a>
+          <a href="/tools/hr-reference-request/" class="tool-card">Reference Request <span>→</span></a>
+          <a href="/tools/hr-employee-onboarding-welcome/" class="tool-card">Employee Welcome <span>→</span></a>
+          <a href="/tools/hr-performance-review-request/" class="tool-card">Performance Review Request
+            <span>→</span></a>
+          <a href="/tools/hr-salary-increase-request/" class="tool-card">Salary Increase Request <span>→</span></a>
+          <a href="/tools/hr-referral-introduction/" class="tool-card">Employee Referral Introduction <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Accounts & Tech -->
+      <div class="cat-section" id="tech-support">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Accounts & Tech</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Account access, bug reports, feature requests, data
+          deletion.</p>
+        <div class="tools-grid">
+          <a href="/tools/tech-bug-report/" class="tool-card">Bug Report <span>→</span></a>
+          <a href="/tools/tech-feature-request/" class="tool-card">Feature Request <span>→</span></a>
+          <a href="/tools/tech-account-recovery/" class="tool-card">Account Recovery Request <span>→</span></a>
+          <a href="/tools/tech-data-deletion-request/" class="tool-card">Data Deletion (GDPR) Request <span>→</span></a>
+          <a href="/tools/tech-api-access-request/" class="tool-card">API Access Request <span>→</span></a>
+          <a href="/tools/tech-billing-portal-access/" class="tool-card">Billing Portal Access Request
+            <span>→</span></a>
+          <a href="/tools/tech-subscription-upgrade/" class="tool-card">Subscription Upgrade Request <span>→</span></a>
+          <a href="/tools/tech-password-reset-issue/" class="tool-card">Password Reset Issue <span>→</span></a>
+          <a href="/tools/tech-integration-help/" class="tool-card">Integration Help Request <span>→</span></a>
+          <a href="/tools/tech-service-outage-report/" class="tool-card">Service Outage Report <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Contracts & Formal -->
+      <div class="cat-section" id="notices">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Contracts & Formal</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Legal-adjacent notices, formal document requests,
+          intent to file.</p>
+        <div class="tools-grid">
+          <a href="/tools/notice-written-confirmation/" class="tool-card">Written Confirmation <span>→</span></a>
+          <a href="/tools/notice-document-request/" class="tool-card">Formal Document Request <span>→</span></a>
+          <a href="/tools/notice-intent-to-file/" class="tool-card">Notice of Intent <span>→</span></a>
+          <a href="/tools/notice-cease-and-desist-polite/" class="tool-card">Polite Cease & Desist <span>→</span></a>
+          <a href="/tools/notice-meeting-confirmation/" class="tool-card">Formal Meeting Confirmation <span>→</span></a>
+          <a href="/tools/notice-withdrawal-of-consent/" class="tool-card">Withdrawal of Consent <span>→</span></a>
+          <a href="/tools/notice-change-of-representative/" class="tool-card">Notice of Representation Change
+            <span>→</span></a>
+          <a href="/tools/notice-event-cancellation/" class="tool-card">Formal Event Cancellation <span>→</span></a>
+          <a href="/tools/notice-policy-update-ack/" class="tool-card">Policy Update Acknowledgment <span>→</span></a>
+          <a href="/tools/notice-request-for-extension/" class="tool-card">Formal Extension Request <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Housing & Living -->
+      <div class="cat-section" id="housing">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Housing & Living</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Landlord/tenant requests, repairs, noise
+          complaints.</p>
+        <div class="tools-grid">
+          <a href="/tools/housing-repair-request/" class="tool-card">Repair Request to Landlord <span>→</span></a>
+          <a href="/tools/housing-repair-follow-up/" class="tool-card">Repair Request Follow-up <span>→</span></a>
+          <a href="/tools/housing-move-out-notice/" class="tool-card">Move-out Notice <span>→</span></a>
+          <a href="/tools/housing-lease-renewal-request/" class="tool-card">Lease Renewal Request <span>→</span></a>
+          <a href="/tools/housing-early-lease-termination/" class="tool-card">Early Lease Termination Request
+            <span>→</span></a>
+          <a href="/tools/housing-security-deposit-request/" class="tool-card">Security Deposit Return Request
+            <span>→</span></a>
+          <a href="/tools/housing-noise-complaint-neighbor/" class="tool-card">Noise Complaint to Neighbor
+            <span>→</span></a>
+          <a href="/tools/housing-rent-late-apology/" class="tool-card">Rent Late Apology <span>→</span></a>
+          <a href="/tools/housing-pet-permission-request/" class="tool-card">Pet Permission Request <span>→</span></a>
+          <a href="/tools/housing-modification-permission/" class="tool-card">Home Modification Permission Request
+            <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Travel & Booking -->
+      <div class="cat-section" id="travel">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Travel & Booking</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Flights, hotel refunds, delays, insurance claims.
+        </p>
+        <div class="tools-grid">
+          <a href="/tools/travel-flight-delay-complaint/" class="tool-card">Flight Delay Complaint <span>→</span></a>
+          <a href="/tools/travel-lost-luggage-claim/" class="tool-card">Lost Luggage Claim <span>→</span></a>
+          <a href="/tools/travel-hotel-refund-request/" class="tool-card">Hotel Refund Request <span>→</span></a>
+          <a href="/tools/travel-booking-cancellation/" class="tool-card">Travel Booking Cancellation <span>→</span></a>
+          <a href="/tools/travel-insurance-claim/" class="tool-card">Travel Insurance Claim <span>→</span></a>
+          <a href="/tools/travel-car-rental-issue/" class="tool-card">Car Rental Issue Report <span>→</span></a>
+          <a href="/tools/travel-visa-support-request/" class="tool-card">Visa Support Letter Request <span>→</span></a>
+          <a href="/tools/travel-tour-cancellation/" class="tool-card">Tour Cancellation <span>→</span></a>
+          <a href="/tools/travel-itinerary-request/" class="tool-card">Request Itinerary/Confirmation <span>→</span></a>
+          <a href="/tools/travel-overbooking-compensation/" class="tool-card">Overbooking Compensation Claim
+            <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Business & Freelance -->
+      <div class="cat-section" id="freelance">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Business & Freelance</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Client management, scope changes, late payments,
+          proposals.</p>
+        <div class="tools-grid">
+          <a href="/tools/freelance-proposal-follow-up/" class="tool-card">Proposal Follow-up <span>→</span></a>
+          <a href="/tools/freelance-client-onboarding/" class="tool-card">Client Onboarding <span>→</span></a>
+          <a href="/tools/freelance-contract-follow-up/" class="tool-card">Contract Follow-up <span>→</span></a>
+          <a href="/tools/freelance-scope-change-request/" class="tool-card">Scope Change Request <span>→</span></a>
+          <a href="/tools/freelance-additional-fee-request/" class="tool-card">Additional Fee Request <span>→</span></a>
+          <a href="/tools/freelance-late-payment-reminder/" class="tool-card">Late Payment Reminder (Client)
+            <span>→</span></a>
+          <a href="/tools/freelance-second-late-payment-notice/" class="tool-card">Second Late Payment Notice
+            <span>→</span></a>
+          <a href="/tools/freelance-final-payment-notice/" class="tool-card">Final Late Payment Notice
+            <span>→</span></a>
+          <a href="/tools/freelance-send-invoice/" class="tool-card">Invoice Message to Client <span>→</span></a>
+          <a href="/tools/freelance-request-deposit/" class="tool-card">Request Deposit Upfront <span>→</span></a>
+          <a href="/tools/freelance-revision-limit-reminder/" class="tool-card">Revision Limit Reminder
+            <span>→</span></a>
+          <a href="/tools/freelance-project-delay-update/" class="tool-card">Project Delay Update <span>→</span></a>
+          <a href="/tools/freelance-project-handoff/" class="tool-card">Project Handoff <span>→</span></a>
+          <a href="/tools/freelance-request-testimonial/" class="tool-card">Request Testimonial <span>→</span></a>
+          <a href="/tools/freelance-end-contract-politely/" class="tool-card">End Contract Politely <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- School & University -->
+      <div class="cat-section" id="education">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">School & University</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Teacher messages, enrollment, extensions,
+          recommendations.</p>
+        <div class="tools-grid">
+          <a href="/tools/education-absence-excuse-email/" class="tool-card">Absence Excuse <span>→</span></a>
+          <a href="/tools/education-extension-request/" class="tool-card">Assignment Extension Request
+            <span>→</span></a>
+          <a href="/tools/education-late-homework-apology/" class="tool-card">Late Homework Apology <span>→</span></a>
+          <a href="/tools/education-recommendation-letter-request/" class="tool-card">Recommendation Letter Request
+            <span>→</span></a>
+          <a href="/tools/education-grade-review-request/" class="tool-card">Grade Review Request <span>→</span></a>
+          <a href="/tools/education-teacher-meeting-request/" class="tool-card">Teacher Meeting Request
+            <span>→</span></a>
+          <a href="/tools/education-enrollment-inquiry/" class="tool-card">Enrollment Inquiry <span>→</span></a>
+          <a href="/tools/education-scholarship-inquiry/" class="tool-card">Scholarship Inquiry <span>→</span></a>
+          <a href="/tools/education-request-materials/" class="tool-card">Request Syllabus/Materials <span>→</span></a>
+          <a href="/tools/education-thank-you-teacher/" class="tool-card">Thank You Message to Teacher
+            <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Personal Messages -->
+      <div class="cat-section" id="relationships">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Personal Messages</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Condolences, thank you, breakup, reconnection
+          messages.</p>
+        <div class="tools-grid">
+          <a href="/tools/relationship-apology-message/" class="tool-card">Apology <span>→</span></a>
+          <a href="/tools/relationship-apology-late-reply/" class="tool-card">Apology for Late Reply <span>→</span></a>
+          <a href="/tools/relationship-set-boundary/" class="tool-card">Set Boundary <span>→</span></a>
+          <a href="/tools/relationship-decline-invitation/" class="tool-card">Decline Invitation Politely
+            <span>→</span></a>
+          <a href="/tools/relationship-request-serious-talk/" class="tool-card">Request a Serious Talk
+            <span>→</span></a>
+          <a href="/tools/relationship-breakup-message/" class="tool-card">Respectful Breakup <span>→</span></a>
+          <a href="/tools/relationship-reconnect-message/" class="tool-card">Reconnect After Time <span>→</span></a>
+          <a href="/tools/relationship-clarify-misunderstanding/" class="tool-card">Clarify Misunderstanding
+            <span>→</span></a>
+          <a href="/tools/relationship-thank-you-message/" class="tool-card">Thank You <span>→</span></a>
+          <a href="/tools/relationship-condolence-message/" class="tool-card">Condolence <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Sales & Outreach -->
+      <div class="cat-section" id="sales">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Sales & Outreach</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Cold outreach, demos, quotes, renewals.</p>
+        <div class="tools-grid">
+          <a href="/tools/sales-cold-outreach/" class="tool-card">Cold Outreach <span>→</span></a>
+          <a href="/tools/sales-demo-request/" class="tool-card">Demo Request <span>→</span></a>
+          <a href="/tools/sales-follow-up-after-call/" class="tool-card">Follow-up After Call <span>→</span></a>
+          <a href="/tools/sales-proposal-presentation/" class="tool-card">Sales Proposal Presentation <span>→</span></a>
+          <a href="/tools/sales-quote-delivery/" class="tool-card">Price Quote Delivery <span>→</span></a>
+          <a href="/tools/sales-renewal-reminder/" class="tool-card">Contract Renewal Reminder <span>→</span></a>
+          <a href="/tools/sales-referral-request/" class="tool-card">Referral Request <span>→</span></a>
+          <a href="/tools/sales-break-up-email/" class="tool-card">Sales Break-up <span>→</span></a>
+          <a href="/tools/sales-partnership-inquiry/" class="tool-card">Partnership Inquiry <span>→</span></a>
+          <a href="/tools/sales-event-invitation/" class="tool-card">Event Invitation <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Banking & Finance -->
+      <div class="cat-section" id="banking">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Banking & Finance</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Credit, loans, fee waivers, unauthorized charges.
+        </p>
+        <div class="tools-grid">
+          <a href="/tools/banking-loan-repayment-request/" class="tool-card">Request for Repayment of Loaned Money
+            <span>→</span></a>
+          <a href="/tools/banking-fee-waiver-request/" class="tool-card">Bank Fee Waiver Request <span>→</span></a>
+          <a href="/tools/banking-unauthorized-charge-dispute/" class="tool-card">Unauthorized Charge Dispute
+            <span>→</span></a>
+          <a href="/tools/banking-large-deposit-explanation/" class="tool-card">Explanation of Large Deposit for Loan
+            Review <span>→</span></a>
+          <a href="/tools/banking-credit-report-dispute/" class="tool-card">Credit Report Error Dispute
+            <span>→</span></a>
+          <a href="/tools/banking-investment-tech-inquiry/" class="tool-card">Investment Service Technical Inquiry
+            <span>→</span></a>
+          <a href="/tools/banking-account-closure-request/" class="tool-card">Account Closure Request <span>→</span></a>
+          <a href="/tools/banking-address-update/" class="tool-card">Change of Address Notification <span>→</span></a>
+          <a href="/tools/banking-loan-payoff-request/" class="tool-card">Loan Payoff Statement Request
+            <span>→</span></a>
+          <a href="/tools/banking-increase-credit-limit/" class="tool-card">Credit Limit Increase Request
+            <span>→</span></a>
+          <a href="/tools/banking-stop-payment-request/" class="tool-card">Stop Payment Request <span>→</span></a>
+          <a href="/tools/banking-direct-deposit-setup/" class="tool-card">Direct Deposit Setup Request
+            <span>→</span></a>
+          <a href="/tools/banking-wire-transfer-trace/" class="tool-card">Wire Transfer Trace Request <span>→</span></a>
+          <a href="/tools/banking-mortgage-statement-request/" class="tool-card">Mortgage Statement Request
+            <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Invoices & Billing -->
+      <div class="cat-section" id="billing">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Invoices & Billing</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Payment reminders, billing disputes, receipts.</p>
+        <div class="tools-grid">
+          <a href="/tools/billing-donation-sponsorship-request/" class="tool-card">Donation or Sponsorship Request
+            <span>→</span></a>
+          <a href="/tools/billing-split-bill-payment-request/" class="tool-card">Split Bill Payment Request
+            <span>→</span></a>
+          <a href="/tools/billing-apology-late-payment/" class="tool-card">Apology for Late Payment <span>→</span></a>
+          <a href="/tools/billing-payment-reminder/" class="tool-card">Payment Reminder <span>→</span></a>
+          <a href="/tools/billing-overdue-invoice-reminder/" class="tool-card">Overdue Invoice Reminder
+            <span>→</span></a>
+          <a href="/tools/billing-second-payment-reminder/" class="tool-card">Second Payment Reminder <span>→</span></a>
+          <a href="/tools/billing-final-payment-notice/" class="tool-card">Final Payment Notice <span>→</span></a>
+          <a href="/tools/billing-request-invoice-receipt/" class="tool-card">Invoice / Receipt Request
+            <span>→</span></a>
+          <a href="/tools/billing-billing-error-dispute/" class="tool-card">Billing Error Dispute <span>→</span></a>
+          <a href="/tools/billing-duplicate-charge-dispute/" class="tool-card">Duplicate Charge Dispute
+            <span>→</span></a>
+          <a href="/tools/chargeback-request/" class="tool-card">Chargeback Request <span>→</span></a>
+          <a href="/tools/billing-refund-status-request/" class="tool-card">Refund Status Request <span>→</span></a>
+          <a href="/tools/billing-update-payment-method/" class="tool-card">Update Payment Method Request
+            <span>→</span></a>
+          <a href="/tools/billing-request-payment-plan/" class="tool-card">Payment Plan Request <span>→</span></a>
+          <a href="/tools/billing-confirm-payment-received/" class="tool-card">Payment Received Confirmation
+            <span>→</span></a>
+          <a href="/tools/billing-request-bank-details/" class="tool-card">Request Bank Details <span>→</span></a>
+          <a href="/tools/billing-tip-correction-request/" class="tool-card">Tip Amount Correction Request
+            <span>→</span></a>
+          <a href="/tools/billing-price-adjustment-request/" class="tool-card">Price Adjustment Request
+            <span>→</span></a>
+          <a href="/tools/billing-late-fee-waiver-request/" class="tool-card">Late Fee Waiver Request <span>→</span></a>
+          <a href="/tools/billing-tax-refund-inquiry/" class="tool-card">Tax Refund Delay Inquiry <span>→</span></a>
+          <a href="/tools/billing-quote-request/" class="tool-card">Quote Request <span>→</span></a>
+        </div>
+      </div>
+
+      <!-- Customer Support -->
+      <div class="cat-section" id="customer">
+        <div class="section-header">
+          <h2 class="section-title" style="font-size:24px; margin-bottom:0;">Customer Support</h2>
+        </div>
+        <p class="small" style="margin-bottom:20px; font-size:15px;">Refunds, damaged items, return requests.</p>
+        <div class="tools-grid">
+          <a href="/tools/customer-refund-request/" class="tool-card">Refund Request <span>→</span></a>
+          <a href="/tools/customer-refund-follow-up/" class="tool-card">Refund Follow-up <span>→</span></a>
+          <a href="/tools/customer-partial-refund-request/" class="tool-card">Partial Refund Request <span>→</span></a>
+          <a href="/tools/customer-cancel-subscription/" class="tool-card">Cancel Subscription Request
+            <span>→</span></a>
+          <a href="/tools/customer-stop-auto-renewal/" class="tool-card">Stop Auto-Renewal <span>→</span></a>
+          <a href="/tools/customer-late-delivery-complaint/" class="tool-card">Late Delivery Complaint
+            <span>→</span></a>
+          <a href="/tools/customer-item-not-received/" class="tool-card">Item Not Received <span>→</span></a>
+          <a href="/tools/customer-damaged-item-report/" class="tool-card">Damaged Item Report <span>→</span></a>
+          <a href="/tools/customer-wrong-item-received/" class="tool-card">Wrong Item Received <span>→</span></a>
+          <a href="/tools/customer-missing-parts/" class="tool-card">Missing Parts in Package <span>→</span></a>
+          <a href="/tools/customer-return-request/" class="tool-card">Return Request <span>→</span></a>
+          <a href="/tools/customer-exchange-request/" class="tool-card">Exchange Request <span>→</span></a>
+          <a href="/tools/customer-warranty-claim/" class="tool-card">Warranty Claim <span>→</span></a>
+          <a href="/tools/customer-complaint-escalation/" class="tool-card">Complaint Escalation <span>→</span></a>
+          <a href="/tools/customer-support-ticket-message/" class="tool-card">Support Ticket <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+        <div>
+          <div class="brand" style="margin-bottom:8px; font-size: 24px; font-weight: 700;"><span>SendDraft</span></div>
+          <p style="margin:0; font-size:13px">The right words, when you need them.</p>
+        </div>
+        <div style="display:flex; gap:32px">
+          <a href="/about/" style="color:var(--sub); font-size:13px">About</a>
+          <a href="/privacy.html" style="color:var(--sub); font-size:13px">Privacy</a>
+          <a href="/terms.html" style="color:var(--sub); font-size:13px">Terms</a>
+        </div>
+      </div>
+      <div style="margin-top:24px; padding-top:24px; border-top:1px solid var(--border); font-size:12px; opacity:0.6">
+        &copy; 2024 SendDraft. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/tools-data.js?v=2"></script>
+  <script src="/assets/home-search-hints.js?v=2"></script>
+  <script src="/assets/home-search.js?v=2"></script>
+</body>
+
+</html>
