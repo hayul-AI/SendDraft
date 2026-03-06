@@ -271,6 +271,7 @@ function sd_init() {
     a.amount = am;
     a.reason = re;
     a.company = src.company || r || "";
+    a.position = ref || "";
 
     a.date_str = d ? ` on ${d}` : "";
     a.date_str_firm = d ? ` on ${d}` : "";
@@ -313,6 +314,7 @@ function sd_init() {
     a.urgent_str = "";
     a.addition_str = re ? ` ${re}` : "";
     a.additional_str = re ? ` ${re}` : "";
+    a.coverage_str = ref ? ` My plan for coverage during this time is: ${ref}.` : "";
 
     a.ref_str = ref ? ` (Ref: ${ref})` : "";
     a.ref_str_firm = ref ? ` (Ref: ${ref})` : "";

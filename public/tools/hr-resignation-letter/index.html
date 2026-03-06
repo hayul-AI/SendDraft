@@ -202,13 +202,25 @@
       title: "Resignation Letter",
       category: "hr",
       intent: "formal resignation letter",
-      formPreset: "hr_standard",
+      formPreset: "hr_resignation",
       defaultTone: "gentle",
       autoGenerate: true,
       templates: {
-        gentle: `Please accept this message as formal notification that I am resigning from my position at {{company}}. I have truly enjoyed my time here and appreciate the opportunities I have been given during my tenure. My final day of work will be {{date}}, and I am committed to ensuring a smooth transition of my {{reference}}. Thank you for your support and for the positive experiences I have had with the team.`,
-        neutral: `I am writing to formally resign from my position at {{company}}, effective {{date}}. I have decided to pursue a new opportunity and am providing this notice in accordance with my contract requirements. I intend to complete all outstanding tasks related to {{reference}} before my departure to minimize any disruption. Thank you for the opportunity to work with the organization during this time.`,
-        firm: `This message serves as my formal resignation from {{company}}, with my final day of employment being {{date}}. I will be focusing my remaining time on the transition of {{reference}} and ensuring all handover documentation is complete. Please let me know the necessary next steps for the offboarding process and any final administrative requirements. I appreciate your prompt acknowledgment of this notice.`
+        gentle: `Hi {{recipient}},
+
+I'm writing to formally resign from my position as {{reference}}. I am {{reason}}, so my last working day will be {{date}}.
+
+I've truly enjoyed my time here and wish the team the best. Thanks!`,
+        neutral: `Hello {{recipient}},
+
+Please accept this letter as formal notification that I am resigning from my position as {{reference}}. I am {{reason}} and my final day will be {{date}}.
+
+I will ensure a smooth handoff of my current projects. Regards.`,
+        firm: `Hello {{recipient}},
+
+I am formally resigning from my role as {{reference}}, effective {{date}}. I am {{reason}}.
+
+Please let me know the required next steps for my departure and handoff. Thank you.`
       }
     };
   </script>

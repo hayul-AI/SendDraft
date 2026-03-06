@@ -202,13 +202,25 @@
     title: "Interview Invitation",
     category: "hr",
     intent: "invite candidate to interview",
-    formPreset: "hr_standard",
+    formPreset: "hr_interview_invite",
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}I'd appreciate your help with this when you have a moment. `,
-      neutral: `Hello {{company}},\n\nI am writing regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Please let me know the current status or next steps.\n\n`,
-      firm: `Hello {{company}},\n\nI am formally contacting you regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}{{#date}}I expect a response on this matter by {{date}}. {{/date}}Thank you for your prompt attention.\n\n`
+      gentle: `Hi {{recipient}},
+
+I hope you're having a good week. I'm reaching out from {{company}} regarding your application for the {{reference}} role. We'd like to invite you for {{reason}}{{#date}} on {{date}}{{/date}}.
+
+Please let us know if this works for you. Thanks!`,
+      neutral: `Hello {{recipient}},
+
+I am writing to invite you for {{reason}} regarding the {{reference}} position at {{company}}. We have tentatively scheduled this {{#date}}for {{date}}{{/date}}.
+
+Please confirm your availability or suggest an alternative time. Regards.`,
+      firm: `Hello {{recipient}},
+
+This is a formal invitation for {{reason}} for the {{reference}} role at {{company}}. We would like to meet {{#date}}on {{date}}{{/date}}.
+
+Please respond by end of day to confirm this slot. Thank you.`
     }
   };
   </script>

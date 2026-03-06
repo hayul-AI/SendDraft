@@ -202,13 +202,25 @@
       title: "Job Offer",
       category: "hr",
       intent: "send job offer message",
-      formPreset: "hr_recruiting",
+      formPreset: "hr_job_offer",
       defaultTone: "gentle",
       autoGenerate: true,
       templates: {
-        gentle: `I am delighted to formally offer you the position of {{position}} at {{company}}. Your skills and experience stood out during the interview process, and we believe you will be a fantastic addition to our team. Please review the attached details regarding your start date and initial responsibilities. We look forward to your positive response and to welcoming you aboard soon.`,
-        neutral: `We are pleased to extend an offer of employment for the {{position}} role at {{company}}. This offer is based on your qualifications and the positive feedback from our hiring team during the evaluation process. Attached you will find the formal agreement and further instructions for {{reference}}. We would appreciate receiving your decision by the requested deadline.`,
-        firm: `This message serves as a formal offer of employment for the position of {{position}} at {{company}}. The terms of this offer, including the proposed start date and compensation, are outlined in the documentation provided for {{reference}}. We require a formal response regarding your acceptance of these terms by {{date}}. Please ensure all necessary paperwork is completed and returned to our HR department promptly.`
+        gentle: `Hi {{recipient}},
+
+Great news! We are pleased to offer you the {{reference}} position at our company. This is {{reason}} with a proposed start date {{#date}}of {{date}}{{/date}}.
+
+We are excited to have you join the team! Best, {{company}}`,
+        neutral: `Hello {{recipient}},
+
+We are pleased to extend a formal offer for the {{reference}} role. This is {{reason}} with an annual salary of {{amount}}. Your start date is proposed {{#date}}for {{date}}{{/date}}.
+
+Please review the attached details and let us know your decision. Regards.`,
+        firm: `Hello {{recipient}},
+
+Please find our formal job offer for the {{reference}} position. This is {{reason}} starting {{#date}}on {{date}}{{/date}} at a salary of {{amount}}.
+
+We expect a response regarding this offer within 48 hours. Thank you.`
       }
     };
   </script>

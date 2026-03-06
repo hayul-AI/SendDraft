@@ -202,13 +202,25 @@
     title: "Employee Referral Introduction",
     category: "hr",
     intent: "refer a friend for a job",
-    formPreset: "hr_standard",
+    formPreset: "hr_referral",
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}I'd appreciate your help with this when you have a moment. `,
-      neutral: `Hello {{company}},\n\nI am writing regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Please let me know the current status or next steps.\n\n`,
-      firm: `Hello {{company}},\n\nI am formally contacting you regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}{{#date}}I expect a response on this matter by {{date}}. {{/date}}Thank you for your prompt attention.\n\n`
+      gentle: `Hi {{recipient}},
+
+I hope you're having a great week. I'm reaching out to formally refer {{reason}} for the {{reference}} position at {{company}}.
+
+I've worked with {{reason}} previously and believe they would be a fantastic fit for the team. Thanks!`,
+      neutral: `Hello {{recipient}},
+
+I am writing to refer {{reason}} for the {{reference}} opening at {{company}}. Based on my experience with them, I believe they have the right skills and cultural fit for this role.
+
+Please let me know if you need any further information. Regards.`,
+      firm: `Hello {{recipient}},
+
+This is a formal referral for {{reason}} regarding the {{reference}} position. I highly recommend them for this role at {{company}}.
+
+I look forward to hearing how the process moves forward. Thank you.`
     }
   };
   </script>

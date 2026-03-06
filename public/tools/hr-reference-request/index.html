@@ -202,13 +202,25 @@
     title: "Reference Request",
     category: "hr",
     intent: "ask for professional reference",
-    formPreset: "hr_standard",
+    formPreset: "hr_reference_req",
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}I'd appreciate your help with this when you have a moment. `,
-      neutral: `Hello {{company}},\n\nI am writing regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Please let me know the current status or next steps.\n\n`,
-      firm: `Hello {{company}},\n\nI am formally contacting you regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}{{#date}}I expect a response on this matter by {{date}}. {{/date}}Thank you for your prompt attention.\n\n`
+      gentle: `Hi {{recipient}},
+
+I hope you're doing well. I'm applying for a {{reference}} position at {{company}} and was wondering if you'd be willing to provide {{reason}} for me?
+
+I'd really appreciate your support. Thanks!`,
+      neutral: `Hello {{recipient}},
+
+I am currently in the process of applying for a {{reference}} role at {{company}}. I am writing to ask if I may list you as {{reason}}.
+
+Please let me know if you are comfortable with this. Regards.`,
+      firm: `Hello {{recipient}},
+
+I am requesting {{reason}} regarding my application for the {{reference}} position at {{company}}.
+
+Could you please let me know if you can provide this by the end of the week? Thank you.`
     }
   };
   </script>

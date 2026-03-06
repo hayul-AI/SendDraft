@@ -160,15 +160,92 @@ window.SENDDRAFT_FORM_PRESETS = {
     { key: "date", label: "Dates (Start - End)", type: "text", placeholder: "Mar 1 - Mar 5", required: true },
     { key: "reference", label: "Coverage plan", type: "text", placeholder: "Alex will handle urgents" }
   ],
-  hr_standard: [
-    { key: "recipient", label: "Employee name", type: "text", placeholder: "Jordan Smith", required: true },
-    { key: "reason", label: "Communication Type", type: "select", required: true, options: [
-      { label: "Performance feedback", value: "I wanted to share some performance feedback with you" },
-      { label: "Policy reminder", value: "this is a friendly reminder regarding our company policy" },
-      { label: "Training notice", value: "we are scheduling a mandatory training session" }
+  hr_interview_invite: [
+    { key: "recipient", label: "Candidate name", type: "text", placeholder: "Jordan Smith", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "Marketing Manager", required: true },
+    { key: "reason", label: "Interview type", type: "select", required: true, options: [
+      { label: "Phone interview", value: "a brief phone screening" },
+      { label: "Video interview", value: "a video call via Zoom/Teams" },
+      { label: "In-person interview", value: "an in-person interview at our office" }
     ]},
-    { key: "date", label: "Effective date", type: "text", placeholder: "Mar 15, 2026", required: true },
-    { key: "reference", label: "Role / Position", type: "text", placeholder: "Senior Designer" }
+    { key: "date", label: "Proposed date", type: "text", placeholder: "March 10 at 2 PM", required: true },
+    { key: "company", label: "Company name", type: "text", placeholder: "SendDraft Inc." }
+  ],
+  hr_job_offer: [
+    { key: "recipient", label: "Candidate name", type: "text", placeholder: "Jordan Smith", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "Software Engineer", required: true },
+    { key: "reason", label: "Employment type", type: "select", required: true, options: [
+      { label: "Full-time position", value: "a full-time role" },
+      { label: "Contract position", value: "a fixed-term contract" },
+      { label: "Part-time position", value: "a part-time role" }
+    ]},
+    { key: "date", label: "Proposed start date", type: "text", placeholder: "Monday, April 1" },
+    { key: "amount", label: "Annual salary", type: "amount", placeholder: "80000" }
+  ],
+  hr_resignation: [
+    { key: "recipient", label: "Manager / HR name", type: "text", placeholder: "Alex Thompson", required: true },
+    { key: "reason", label: "Notice period", type: "select", required: true, options: [
+      { label: "Two-week notice", value: "providing my standard two-week notice" },
+      { label: "Immediate resignation", value: "resigning effective immediately" },
+      { label: "End-of-contract", value: "completing my current contract" }
+    ]},
+    { key: "date", label: "Last working day", type: "text", placeholder: "March 20, 2026", required: true },
+    { key: "reference", label: "Your current position", type: "text", placeholder: "Project Lead" }
+  ],
+  hr_reference_req: [
+    { key: "recipient", label: "Reference name", type: "text", placeholder: "Dr. Jane Miller", required: true },
+    { key: "reason", label: "Reference type", type: "select", required: true, options: [
+      { label: "Professional reference", value: "a professional reference regarding our time working together" },
+      { label: "Academic reference", value: "an academic reference regarding my performance in your course" },
+      { label: "Character reference", value: "a personal character reference" }
+    ]},
+    { key: "reference", label: "Position applying for", type: "text", placeholder: "Senior Consultant" },
+    { key: "company", label: "Target company", type: "text", placeholder: "Global Tech Solutions" }
+  ],
+  hr_offer_response: [
+    { key: "recipient", label: "Hiring manager / Recruiter", type: "text", placeholder: "Sarah Jenkins", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "UX Designer", required: true },
+    { key: "company", label: "Company name", type: "text", placeholder: "Creative Agency", required: true },
+    { key: "date", label: "Offer date", type: "text", placeholder: "Yesterday" }
+  ],
+  hr_application_followup: [
+    { key: "recipient", label: "Recruiter / Hiring manager", type: "text", placeholder: "Hiring Team", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "Accountant", required: true },
+    { key: "company", label: "Company name", type: "text", placeholder: "FinCorp", required: true },
+    { key: "date", label: "Application date", type: "text", placeholder: "last week" }
+  ],
+  hr_onboarding: [
+    { key: "recipient", label: "New employee name", type: "text", placeholder: "Jordan Smith", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "Junior Developer", required: true },
+    { key: "date", label: "Start date", type: "text", placeholder: "Monday morning", required: true },
+    { key: "reason", label: "Arrival instructions", type: "text", placeholder: "Check in at the front desk" }
+  ],
+  hr_salary_req: [
+    { key: "recipient", label: "Manager / Director name", type: "text", placeholder: "Alex Thompson", required: true },
+    { key: "reference", label: "Your current position", type: "text", placeholder: "Content Specialist", required: true },
+    { key: "amount", label: "Desired salary / % increase", type: "text", placeholder: "10% increase" },
+    { key: "date", label: "Effective date", type: "text", placeholder: "Next quarter" }
+  ],
+  hr_rejection: [
+    { key: "recipient", label: "Candidate name", type: "text", placeholder: "Jordan Smith", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "Account Manager", required: true },
+    { key: "company", label: "Company name", type: "text", placeholder: "SendDraft Inc." }
+  ],
+  hr_referral: [
+    { key: "recipient", label: "Recruiter / Hiring manager", type: "text", placeholder: "Sarah Jenkins", required: true },
+    { key: "reason", label: "Candidate name", type: "text", placeholder: "Jordan Smith", required: true },
+    { key: "reference", label: "Position title", type: "text", placeholder: "Senior Designer", required: true },
+    { key: "company", label: "Company name", type: "text", placeholder: "SendDraft Inc." }
+  ],
+  hr_employee_standard: [
+    { key: "recipient", label: "Employee name", type: "text", placeholder: "Jordan Smith", required: true },
+    { key: "reference", label: "Department / Team", type: "text", placeholder: "Product Team" },
+    { key: "reason", label: "Discussion topic", type: "select", required: true, options: [
+      { label: "Performance review", value: "to discuss your recent performance review" },
+      { label: "Project feedback", value: "to share some feedback on your latest project" },
+      { label: "Policy update", value: "to inform you of an update to company policy" }
+    ]},
+    { key: "date", label: "Effective date / Meeting time", type: "text", placeholder: "Tuesday at 10 AM", required: true }
   ],
   bank_basic: [
     { key: "recipient", label: "Bank / Dept", type: "text", placeholder: "Example Bank", required: true },

@@ -202,13 +202,25 @@
     title: "Salary Increase Request",
     category: "hr",
     intent: "ask for a raise message",
-    formPreset: "hr_recruiting",
+    formPreset: "hr_salary_req",
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}I'd appreciate your help with this when you have a moment. `,
-      neutral: `Hello {{company}},\n\nI am writing regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Please let me know the current status or next steps.\n\n`,
-      firm: `Hello {{company}},\n\nI am formally contacting you regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}{{#date}}I expect a response on this matter by {{date}}. {{/date}}Thank you for your prompt attention.\n\n`
+      gentle: `Hi {{recipient}},
+
+I've really enjoyed my growth as a {{reference}} here. Based on my recent achievements and increased responsibilities, I'd like to discuss a potential salary adjustment of {{amount}}.
+
+I'm looking forward to your thoughts. Thanks!`,
+      neutral: `Hello {{recipient}},
+
+I am writing to formally request a review of my current compensation for my role as {{reference}}. I am seeking an increase of {{amount}}, ideally starting {{date}}.
+
+I have prepared a summary of my contributions to discuss with you. Regards.`,
+      firm: `Hello {{recipient}},
+
+This is a formal request for a salary increase regarding my position as {{reference}}. I am requesting a salary adjustment to {{amount}}, effective {{date}}.
+
+I would appreciate a meeting to discuss this request further. Thank you.`
     }
   };
   </script>

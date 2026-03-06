@@ -179,13 +179,25 @@
       title: "Job Application Follow-up",
       category: "hr",
       intent: "check status of job application",
-      formPreset: "follow_up",
+      formPreset: "hr_application_followup",
       defaultTone: "gentle",
       autoGenerate: true,
       templates: {
-        gentle: "Hi {{recipient}},\n\nI hope you're having a good day. I'm reaching out regarding {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} on {{date}}{{/date}}. {{#reason}}\n\n{{reason}}{{/reason}}\n\nI'd appreciate your help with this. Thanks!",
-        neutral: "Hello {{recipient}},\n\nI am writing regarding {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} on {{date}}{{/date}}. {{#reason}}\n\n{{reason}}{{/reason}}\n\nPlease let me know the next steps. Regards.",
-        firm: "Hello {{recipient}},\n\nThis is a formal message regarding {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} on {{date}}{{/date}}. {{#reason}}\n\n{{reason}}{{/reason}}\n\nI expect a prompt response on this matter. Thank you."
+        gentle: `Hi {{recipient}},
+
+I hope your week is going well. I'm just checking in on the status of my application for the {{reference}} role at {{company}}{{#date}} (submitted {{date}}){{/date}}.
+
+I'm still very interested! Thanks!`,
+        neutral: `Hello {{recipient}},
+
+I am writing to follow up on my application for the {{reference}} position at {{company}}. I applied {{#date}}on {{date}}{{/date}} and was wondering if there are any updates.
+
+Please let me know if you need any further information. Regards.`,
+        firm: `Hello {{recipient}},
+
+I am formally following up on the status of my application for the {{reference}} role at {{company}}, which was submitted {{#date}}on {{date}}{{/date}}.
+
+I look forward to hearing about the next steps in the process. Thank you.`
       }
     };
   </script>

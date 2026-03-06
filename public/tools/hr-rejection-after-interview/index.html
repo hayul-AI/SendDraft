@@ -202,13 +202,25 @@
     title: "Job Rejection (Post-Interview)",
     category: "hr",
     intent: "reject candidate politely",
-    formPreset: "hr_standard",
+    formPreset: "hr_rejection",
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}} Team,\n\nI hope your week is going well. I'm reaching out regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}I'd appreciate your help with this when you have a moment. `,
-      neutral: `Hello {{company}},\n\nI am writing regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Please let me know the current status or next steps.\n\n`,
-      firm: `Hello {{company}},\n\nI am formally contacting you regarding my {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} from {{date}}{{/date}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}{{#date}}I expect a response on this matter by {{date}}. {{/date}}Thank you for your prompt attention.\n\n`
+      gentle: `Hi {{recipient}},
+
+Thank you so much for taking the time to interview for the {{reference}} position at {{company}}. While we were impressed with your background, we have decided to move forward with other candidates at this time.
+
+We appreciate your interest in us and wish you the best in your job search. Thanks!`,
+      neutral: `Hello {{recipient}},
+
+Thank you for interviewing for the {{reference}} role at {{company}}. After careful consideration, we are writing to let you know that we will not be moving forward with your application for this position.
+
+We will keep your resume on file for future opportunities that may match your skills. Regards.`,
+      firm: `Hello {{recipient}},
+
+This is to notify you that we have concluded our hiring process for the {{reference}} position at {{company}}. We will not be extending an offer to you at this time.
+
+Thank you for your time and interest in our organization. Regards.`
     }
   };
   </script>

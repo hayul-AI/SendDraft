@@ -179,13 +179,25 @@
       title: "Offer Decline",
       category: "hr",
       intent: "formally decline job offer",
-      formPreset: "hr_recruiting",
+      formPreset: "hr_offer_response",
       defaultTone: "gentle",
       autoGenerate: true,
       templates: {
-        gentle: "Hi {{recipient}},\n\nI hope you're having a good day. I'm reaching out regarding {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} on {{date}}{{/date}}. {{#reason}}\n\n{{reason}}{{/reason}}\n\nI'd appreciate your help with this. Thanks!",
-        neutral: "Hello {{recipient}},\n\nI am writing regarding {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} on {{date}}{{/date}}. {{#reason}}\n\n{{reason}}{{/reason}}\n\nPlease let me know the next steps. Regards.",
-        firm: "Hello {{recipient}},\n\nThis is a formal message regarding {{toolTitle_lower}}{{#reference}} (Ref: {{reference}}){{/reference}}{{#date}} on {{date}}{{/date}}. {{#reason}}\n\n{{reason}}{{/reason}}\n\nI expect a prompt response on this matter. Thank you."
+        gentle: `Hi {{recipient}},
+
+Thank you so much for the offer for the {{reference}} role at {{company}}. After careful thought, I've decided to move forward with another opportunity at this time.
+
+I truly appreciate your time. Best,`,
+        neutral: `Hello {{recipient}},
+
+Thank you for the offer to join {{company}} as a {{reference}}. While I was impressed with the team, I have decided to decline the offer to pursue a different direction.
+
+I wish you the best in finding the right candidate. Regards.`,
+        firm: `Hello {{recipient}},
+
+I am writing to formally decline the offer for the {{reference}} position at {{company}}. This decision is final as I have accepted another role.
+
+Thank you for the opportunity. Regards.`
       }
     };
   </script>
