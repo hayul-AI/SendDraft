@@ -200,6 +200,8 @@ function sd_collect(form) {
     if (el.classList.contains("sd-amount-input")) {
       const curEl = form.querySelector(`[data-sd-currency="${key}"]`);
       if (curEl && val) {
+        data[key + "_raw"] = val;
+        data[key + "_currency"] = curEl.value;
         val = formatMoney(val, curEl.value);
       }
     }
@@ -262,11 +264,11 @@ function sd_init() {
 
     // Base injections with fallbacks
     a.recipient = r || src.company || "";
-    a.name = n;
+    a.name = n || "";
     a.topic = t || ref || "";
     a.item = i || ref || t || "";
-    a.product = i || t || ref || ""; // Added explicit product
-    a.service = i || t || ref || ""; // Added explicit service
+    a.product = i || t || ref || ""; 
+    a.service = i || t || ref || ""; 
     a.reference = ref || t || i || "";
     a.date = d;
     a.time = time;
@@ -274,24 +276,25 @@ function sd_init() {
     a.reason = re;
     a.company = src.company || r || "";
     a.position = ref || "";
+    a.holder = n || "the account holder";
 
-    a.date_str = d ? ` on ${d}${a.time_str}` : "";
-    a.date_str_firm = d ? ` on ${d}${a.time_str}` : "";
-    a.date_str_neutral = d ? ` on ${d}${a.time_str}` : "";
-    a.orig_date_str = d ? ` on ${d}${a.time_str}` : "";
-    a.orig_date_plain = d ? ` on ${d}${a.time_str}` : "";
-    a.orig_date_str_firm = d ? ` on ${d}${a.time_str}` : "";
-    a.deadline_str = d ? ` by ${d}${a.time_str}` : "";
-    a.deadline_plain = d ? ` by ${d}${a.time_str}` : "";
-    a.deadline_str_firm = d ? ` by ${d}${a.time_str}` : "";
-    a.pay_date_str = d ? ` by ${d}${a.time_str}` : "";
+    a.date_str = d ? ` on ${d}${a.time_str || ""}` : "";
+    a.date_str_firm = d ? ` on ${d}${a.time_str || ""}` : "";
+    a.date_str_neutral = d ? ` on ${d}${a.time_str || ""}` : "";
+    a.orig_date_str = d ? ` on ${d}${a.time_str || ""}` : "";
+    a.orig_date_plain = d ? ` on ${d}${a.time_str || ""}` : "";
+    a.orig_date_str_firm = d ? ` on ${d}${a.time_str || ""}` : "";
+    a.deadline_str = d ? ` by ${d}${a.time_str || ""}` : "";
+    a.deadline_plain = d ? ` by ${d}${a.time_str || ""}` : "";
+    a.deadline_str_firm = d ? ` by ${d}${a.time_str || ""}` : "";
+    a.pay_date_str = d ? ` by ${d}${a.time_str || ""}` : "";
     a.pay_date = d;
     a.start_str = d ? String(d).split(/[~|-]|to|until/)[0].trim() : "";
     a.end_str = d && String(d).match(/[~|-]|to|until/) ? String(d).split(/[~|-]|to|until/)[1].trim() : "";
     a.time_str = time ? ` at ${time}` : (d && d.includes(':') ? ` at ${d}` : "");
-    a.window_str = d ? ` within ${d}${a.time_str}` : "";
-    a.window_str_firm = d ? ` within ${d}${a.time_str}` : "";
-    a.lent_date_str = d ? ` on ${d}${a.time_str}` : "";
+    a.window_str = d ? ` within ${d}${a.time_str || ""}` : "";
+    a.window_str_firm = d ? ` within ${d}${a.time_str || ""}` : "";
+    a.lent_date_str = d ? ` on ${d}${a.time_str || ""}` : "";
     a.req_date = d;
     a.new_date = d;
 
@@ -317,6 +320,7 @@ function sd_init() {
     a.addition_str = re ? ` ${re}` : "";
     a.additional_str = re ? ` ${re}` : "";
     a.coverage_str = ref ? ` My plan for coverage during this time is: ${ref}.` : "";
+    a.confirm_str = "\\n\\nPlease confirm once the request has been processed.";
 
     a.ref_str = ref ? ` (Ref: ${ref})` : "";
     a.ref_str_firm = ref ? ` (Ref: ${ref})` : "";
@@ -335,17 +339,16 @@ function sd_init() {
     a.method_type_str = ref ? ` ${ref}` : "";
     a.type_str = ref ? ` ${ref}` : "";
     a.store_str = ref ? ` at ${ref}` : "";
+    a.account_str = ref ? ` (Account: ${ref})` : "";
     a.project = ref || t || i;
     a.service = i || ref || t;
     a.merchant = r;
-    a.holder = n;
     a.client = r || src.company || "";
     a.landlord = r || src.company || "";
-    a.client = r;
-    a.landlord = r;
 
     a.amount_str = am ? ` for ${am}` : "";
     a.total_str = am ? ` totaling ${am}` : "";
+    a.balance_str = am ? ` with a current balance of ${am}` : "";
     a.expense = am;
     a.total = am;
     a.p_price = am;

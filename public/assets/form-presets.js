@@ -9,7 +9,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Shipping delay", value: "my order is significantly delayed" },
       { label: "Duplicate charge", value: "I was charged twice for this purchase" }
     ]},
-    { key: "date", label: "Purchase date", type: "text", placeholder: "Mar 1, 2026" },
+    { key: "date", label: "Purchase date", type: "date", placeholder: "Select date" },
     { key: "reference", label: "Order / Reference #", type: "text", placeholder: "ORD-123" },
     { key: "amount", label: "Amount paid", type: "amount", placeholder: "49.99" },
     { key: "details", label: "Additional context (Optional)", type: "text", placeholder: "e.g. box was crushed" }
@@ -18,7 +18,7 @@ window.SENDDRAFT_FORM_PRESETS = {
     { key: "recipient", label: "Recipient (Client/Co.)", type: "text", placeholder: "Example Client", required: true },
     { key: "reference", label: "Invoice #", type: "text", placeholder: "INV-2026-001", required: true },
     { key: "amount", label: "Amount due", type: "amount", placeholder: "1000" },
-    { key: "date", label: "Due date", type: "text", placeholder: "Mar 10, 2026" },
+    { key: "date", label: "Due date", type: "date", placeholder: "Select date" },
     { key: "reason", label: "Payment Status", type: "select", options: [
       { label: "Payment already sent", value: "I have already processed the payment for this invoice." },
       { label: "Will pay by due date", value: "I will ensure payment is completed by the specified due date." },
@@ -28,7 +28,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   invoice_request: [
     { key: "recipient", label: "Recipient (Vendor/Co.)", type: "text", placeholder: "Billing Dept", required: true },
     { key: "item", label: "Service / Product", type: "text", placeholder: "Subscription", required: true },
-    { key: "date", label: "Purchase date", type: "text", placeholder: "Mar 1, 2026" },
+    { key: "date", label: "Purchase date", type: "date", placeholder: "Select date" },
     { key: "reference", label: "Order / Ref #", type: "text", placeholder: "Order #123" },
     { key: "amount", label: "Amount paid", type: "amount", placeholder: "99" },
     { key: "reason", label: "Request Reason", type: "select", options: [
@@ -47,7 +47,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Unrecognized fee", value: "I do not recognize this specific fee on my statement" }
     ]},
     { key: "amount", label: "Disputed amount", type: "amount", placeholder: "49.99" },
-    { key: "date", label: "Charge date", type: "text", placeholder: "Mar 1, 2026" }
+    { key: "date", label: "Charge date", type: "date", placeholder: "Select date" }
   ],
   account_action: [
     { key: "recipient", label: "Recipient (Company)", type: "text", placeholder: "Support Team", required: true },
@@ -58,7 +58,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Update email address", value: "I need to update the primary email on my account" },
       { label: "Delete all data", value: "I am requesting the permanent deletion of my account and data" }
     ]},
-    { key: "date", label: "Effective date", type: "text", placeholder: "Immediately" },
+    { key: "date", label: "Effective date", type: "date", placeholder: "Immediately" },
     { key: "amount", label: "Current Plan", type: "text", placeholder: "Pro Plan" }
   ],
   support_ticket: [
@@ -70,14 +70,15 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Slow performance", value: "the application is running significantly slower than usual" },
       { label: "Error message displayed", value: "I am receiving an error message during standard use" }
     ]},
-    { key: "date", label: "When it happened", type: "text", placeholder: "Today" },
+    { key: "date", label: "When it happened", type: "date", placeholder: "Select date" },
     { key: "reference", label: "Ticket / Account #", type: "text", placeholder: "Ref #123" },
     { key: "amount", label: "Device / OS", type: "text", placeholder: "iOS / Chrome" }
   ],
   meeting: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan", required: true },
     { key: "reference", label: "Meeting Topic", type: "text", placeholder: "Project sync", required: true },
-    { key: "date", label: "Proposed time", type: "text", placeholder: "Tue 2pm" },
+    { key: "date", label: "Proposed date", type: "date", placeholder: "Select date" },
+    { key: "time", label: "Proposed time", type: "time" },
     { key: "reason", label: "Meeting Purpose", type: "select", options: [
       { label: "Discuss project updates", value: "to discuss the latest updates on our project" },
       { label: "Resolve a technical blocker", value: "to find a solution for a current technical blocker" },
@@ -94,7 +95,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Awaiting approval", value: "I am checking in on the status of the approval we discussed" },
       { label: "Gentle reminder", value: "I'm sending a quick reminder regarding our previous conversation" }
     ]},
-    { key: "date", label: "Last contact date", type: "text", placeholder: "last Tuesday" }
+    { key: "date", label: "Last contact date", type: "date", placeholder: "Select date" }
   ],
   work_request: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan Smith", required: true },
@@ -105,7 +106,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Requires urgent action", value: "this matter requires your urgent attention and action" },
       { label: "Data/Info request", value: "I am looking for some specific information related to this" }
     ]},
-    { key: "date", label: "Due date / Deadline", type: "text", placeholder: "by Friday" }
+    { key: "date", label: "Due date / Deadline", type: "date", placeholder: "Select date" }
   ],
   work_standard: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan", required: true },
@@ -115,7 +116,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Sharing a resource", value: "I am sharing a relevant resource that I believe will be helpful" },
       { label: "Confirming completion", value: "I'm writing to confirm that I have completed the assigned task" }
     ]},
-    { key: "date", label: "Date / Time", type: "text", placeholder: "Today" }
+    { key: "date", label: "Date / Time", type: "date", placeholder: "Select date" }
   ],
   hr_recruiting: [
     { key: "recipient", label: "Candidate name", type: "text", placeholder: "Jordan Smith", required: true },
@@ -125,7 +126,8 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Extend job offer", value: "we are pleased to extend a formal job offer to you" },
       { label: "Application update", value: "we wanted to provide you with an update on your application" }
     ]},
-    { key: "date", label: "Schedule date", type: "text", placeholder: "Mar 15, 2026" },
+    { key: "date", label: "Schedule date", type: "date", placeholder: "Select date" },
+    { key: "time", label: "Schedule time", type: "time" },
     { key: "amount", label: "Salary/Package", type: "text", placeholder: "Competitive" }
   ],
   bug_report: [
@@ -136,7 +138,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Major - Feature broken", value: "a major feature is currently not functioning as intended" },
       { label: "Minor - Visual glitch", value: "I've noticed a minor visual glitch that needs attention" }
     ]},
-    { key: "date", label: "When it happened", type: "text", placeholder: "Today" },
+    { key: "date", label: "When it happened", type: "date", placeholder: "Select date" },
     { key: "reference", label: "Environment", type: "text", placeholder: "Chrome / macOS" }
   ],
   bank_request: [
@@ -147,7 +149,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Update personal info", value: "I need to update my personal information on file" },
       { label: "Order new card", value: "I would like to request a replacement for my current card" }
     ]},
-    { key: "date", label: "Date", type: "text", placeholder: "Today" },
+    { key: "date", label: "Date", type: "date", placeholder: "Select date" },
     { key: "amount", label: "Amount", type: "amount", placeholder: "0.00" }
   ],
   hr_pto: [
@@ -157,7 +159,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Personal leave", value: "personal leave" },
       { label: "Sick / Medical", value: "medical leave" }
     ]},
-    { key: "date", label: "Dates (Start - End)", type: "text", placeholder: "Mar 1 - Mar 5" },
+    { key: "date", label: "Dates (Start - End)", type: "date", placeholder: "Select date" },
     { key: "reference", label: "Coverage plan", type: "text", placeholder: "Alex will handle urgents" }
   ],
   hr_interview_invite: [
@@ -168,7 +170,8 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Video interview", value: "a video call via Zoom/Teams" },
       { label: "In-person interview", value: "an in-person interview at our office" }
     ]},
-    { key: "date", label: "Proposed date", type: "text", placeholder: "March 10 at 2 PM" },
+    { key: "date", label: "Proposed date", type: "date", placeholder: "Select date" },
+    { key: "time", label: "Proposed time", type: "time" },
     { key: "company", label: "Company name", type: "text", placeholder: "SendDraft Inc." }
   ],
   hr_job_offer: [
@@ -179,7 +182,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Contract position", value: "a fixed-term contract" },
       { label: "Part-time position", value: "a part-time role" }
     ]},
-    { key: "date", label: "Proposed start date", type: "text", placeholder: "Monday, April 1" },
+    { key: "date", label: "Proposed start date", type: "date", placeholder: "Select date" },
     { key: "amount", label: "Annual salary", type: "amount", placeholder: "80000" },
     { key: "company", label: "Company name", type: "text", placeholder: "SendDraft Inc." }
   ],
@@ -190,7 +193,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Immediate resignation", value: "resigning effective immediately" },
       { label: "End-of-contract", value: "completing my current contract" }
     ]},
-    { key: "date", label: "Last working day", type: "text", placeholder: "March 20, 2026" },
+    { key: "date", label: "Last working day", type: "date", placeholder: "Select date" },
     { key: "reference", label: "Your current position", type: "text", placeholder: "Project Lead" }
   ],
   hr_reference_req: [
@@ -207,25 +210,25 @@ window.SENDDRAFT_FORM_PRESETS = {
     { key: "recipient", label: "Hiring manager / Recruiter", type: "text", placeholder: "Sarah Jenkins", required: true },
     { key: "reference", label: "Position title", type: "text", placeholder: "UX Designer", required: true },
     { key: "company", label: "Company name", type: "text", placeholder: "Creative Agency" },
-    { key: "date", label: "Offer date", type: "text", placeholder: "Yesterday" }
+    { key: "date", label: "Offer date", type: "date", placeholder: "Select date" }
   ],
   hr_application_followup: [
     { key: "recipient", label: "Recruiter / Hiring manager", type: "text", placeholder: "Hiring Team", required: true },
     { key: "reference", label: "Position title", type: "text", placeholder: "Accountant", required: true },
     { key: "company", label: "Company name", type: "text", placeholder: "FinCorp" },
-    { key: "date", label: "Application date", type: "text", placeholder: "last week" }
+    { key: "date", label: "Application date", type: "date", placeholder: "Select date" }
   ],
   hr_onboarding: [
     { key: "recipient", label: "New employee name", type: "text", placeholder: "Jordan Smith", required: true },
     { key: "reference", label: "Position title", type: "text", placeholder: "Junior Developer", required: true },
-    { key: "date", label: "Start date", type: "text", placeholder: "Monday morning" },
+    { key: "date", label: "Start date", type: "date", placeholder: "Select date" },
     { key: "reason", label: "Arrival instructions", type: "text", placeholder: "Check in at the front desk" }
   ],
   hr_salary_req: [
     { key: "recipient", label: "Manager / Director name", type: "text", placeholder: "Alex Thompson", required: true },
     { key: "reference", label: "Your current position", type: "text", placeholder: "Content Specialist", required: true },
     { key: "amount", label: "Desired salary / % increase", type: "text", placeholder: "10% increase" },
-    { key: "date", label: "Effective date", type: "text", placeholder: "Next quarter" }
+    { key: "date", label: "Effective date", type: "date", placeholder: "Select date" }
   ],
   hr_rejection: [
     { key: "recipient", label: "Candidate name", type: "text", placeholder: "Jordan Smith", required: true },
@@ -246,7 +249,8 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Project feedback", value: "to share some feedback on your latest project" },
       { label: "Policy update", value: "to inform you of an update to company policy" }
     ]},
-    { key: "date", label: "Effective date / Meeting time", type: "text", placeholder: "Tuesday at 10 AM" }
+    { key: "date", label: "Effective date", type: "date", placeholder: "Select date" },
+    { key: "time", label: "Meeting time", type: "time" }
   ],
   freelance_followup: [
     { key: "recipient", label: "Client name", type: "text", placeholder: "Jordan Smith", required: true },
@@ -256,12 +260,12 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Clarify requirements", value: "I'm checking in to see if you have any questions or need clarification" },
       { label: "Next steps", value: "I'm reaching out to discuss the next steps for our collaboration" }
     ]},
-    { key: "date", label: "Previous contact date", type: "text", placeholder: "last week" }
+    { key: "date", label: "Previous contact date", type: "date", placeholder: "Select date" }
   ],
   freelance_onboarding: [
     { key: "recipient", label: "Client name", type: "text", placeholder: "Jordan Smith", required: true },
     { key: "reference", label: "Project name", type: "text", placeholder: "E-commerce Website", required: true },
-    { key: "date", label: "Start date", type: "text", placeholder: "Monday morning" },
+    { key: "date", label: "Start date", type: "date", placeholder: "Select date" },
     { key: "reason", label: "Required information", type: "text", placeholder: "Brand assets and login credentials" }
   ],
   freelance_checkin: [
@@ -272,12 +276,12 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Clarify requirements", value: "to clarify a few points regarding the next phase" },
       { label: "General catch-up", value: "to see how everything is going on your end" }
     ]},
-    { key: "date", label: "Next milestone date", type: "text", placeholder: "Next Friday" }
+    { key: "date", label: "Next milestone date", type: "date", placeholder: "Select date" }
   ],
   work_thanks: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan Smith", required: true },
     { key: "reference", label: "Opportunity / Interview", type: "text", placeholder: "Marketing Manager interview", required: true },
-    { key: "date", label: "Date of interaction", type: "text", placeholder: "Yesterday" },
+    { key: "date", label: "Date of interaction", type: "date", placeholder: "Select date" },
     { key: "reason", label: "Specific point of thanks", type: "text", placeholder: "sharing details about the team culture" }
   ],
   bank_basic: [
@@ -288,7 +292,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Close account", value: "I would like to initiate the process of closing this account" },
       { label: "General inquiry", value: "I have a general question regarding my account services" }
     ]},
-    { key: "date", label: "Date", type: "text", placeholder: "Today" }
+    { key: "date", label: "Date", type: "date", placeholder: "Select date" }
   ],
   account_basic: [
     { key: "recipient", label: "Company / Service", type: "text", placeholder: "Example Service", required: true },
@@ -298,7 +302,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Account status check", value: "I am inquiring about the current status of my account" }
     ]},
     { key: "reference", label: "Account ID", type: "text", placeholder: "alex@email.com" },
-    { key: "date", label: "Relevant date", type: "text", placeholder: "Next month" }
+    { key: "date", label: "Relevant date", type: "date", placeholder: "Select date" }
   ],
   purchase_basic: [
     { key: "recipient", label: "Company / Store", type: "text", placeholder: "Example Store", required: true },
@@ -319,7 +323,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Blocker identified", value: "we have identified a major blocker that requires attention" },
       { label: "Milestone reached", value: "I am happy to announce that we have reached a major milestone" }
     ]},
-    { key: "date", label: "Update date", type: "text", placeholder: "Today" },
+    { key: "date", label: "Update date", type: "date", placeholder: "Select date" },
     { key: "amount", label: "Progress %", type: "text", placeholder: "80%" }
   ],
   boundary: [
@@ -339,7 +343,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Technical complexity", value: "because of unexpected technical complexity we encountered" },
       { label: "Timeline adjustment", value: "as a result of the necessary timeline adjustments" }
     ]},
-    { key: "date", label: "Timeline impact", type: "text", placeholder: "+2 days" },
+    { key: "date", label: "Timeline impact", type: "date", placeholder: "Select date" },
     { key: "amount", label: "Cost impact", type: "text", placeholder: "+$200" }
   ],
   relationship_request: [
@@ -349,7 +353,8 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Check-in", value: "I just wanted to check in and see how you're doing" },
       { label: "Plan a meeting", value: "I'd like to find some time for us to catch up properly" }
     ]},
-    { key: "date", label: "Proposed time", type: "text", placeholder: "this weekend" },
+    { key: "date", label: "Proposed time", type: "date", placeholder: "Select date" },
+    { key: "time", label: "Proposed time", type: "time" },
     { key: "reference", label: "Context (Optional)", type: "text", placeholder: "Our future plans" }
   ],
   thanks: [
@@ -360,7 +365,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Greatly appreciated", value: "I wanted you to know how much I appreciate your kind gesture" },
       { label: "Valuable contribution", value: "your contribution was extremely valuable to the team's success" }
     ]},
-    { key: "date", label: "Date", type: "text", placeholder: "Today" }
+    { key: "date", label: "Date", type: "date", placeholder: "Select date" }
   ],
   condolence: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan", required: true },
@@ -370,7 +375,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Sharing a warm memory", value: "I will always remember them for their kindness and warmth" },
       { label: "Sending strength", value: "I am sending you and your family strength and love during this time" }
     ]},
-    { key: "date", label: "Date", type: "text", placeholder: "Today" }
+    { key: "date", label: "Date", type: "date", placeholder: "Select date" }
   ],
   apology: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan", required: true },
@@ -380,7 +385,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Taking responsibility", value: "I take full responsibility for the oversight and will ensure it doesn't happen again" },
       { label: "Brief explanation", value: "I've had some unexpected things come up, but I'm back on track now" }
     ]},
-    { key: "date", label: "When it happened", type: "text", placeholder: "Today" }
+    { key: "date", label: "When it happened", type: "date", placeholder: "Select date" }
   ],
   notice_request: [
     { key: "recipient", label: "Recipient (Entity)", type: "text", placeholder: "Management Dept", required: true },
@@ -390,7 +395,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Verification purposes", value: "I need this for verification purposes related to an external matter" },
       { label: "Information update", value: "I am looking to update certain details within the document" }
     ]},
-    { key: "date", label: "Effective date", type: "text", placeholder: "by next Monday" }
+    { key: "date", label: "Effective date", type: "date", placeholder: "Select date" }
   ],
   general_notice: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan", required: true },
@@ -400,7 +405,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Change in status", value: "please be advised of this upcoming change in my current status" },
       { label: "Upcoming event", value: "I am notifying you of an important upcoming event or deadline" }
     ]},
-    { key: "date", label: "Effective date", type: "text", placeholder: "Next month" }
+    { key: "date", label: "Effective date", type: "date", placeholder: "Select date" }
   ],
   housing_request: [
     { key: "recipient", label: "Recipient (Landlord/Mgr)", type: "text", placeholder: "Property Management", required: true },
@@ -410,7 +415,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Standard - Needs repair", value: "I am requesting a standard repair for this item at your earliest convenience" },
       { label: "Routine maintenance", value: "this is a request for routine maintenance as previously discussed" }
     ]},
-    { key: "date", label: "When noticed", type: "text", placeholder: "Yesterday" }
+    { key: "date", label: "When noticed", type: "date", placeholder: "Select date" }
   ],
   housing_notice: [
     { key: "recipient", label: "Recipient (Landlord/Mgr)", type: "text", placeholder: "Property Management", required: true },
@@ -420,7 +425,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Lease renewal inquiry", value: "I am interested in discussing the renewal of my current lease" },
       { label: "Request to sublease", value: "I am writing to request permission to sublease my unit" }
     ]},
-    { key: "date", label: "Effective date", type: "text", placeholder: "Mar 31, 2026" }
+    { key: "date", label: "Effective date", type: "date", placeholder: "Select date" }
   ],
   complaint_escalation: [
     { key: "recipient", label: "Recipient (Dept/Mgr)", type: "text", placeholder: "Support Manager", required: true },
@@ -430,7 +435,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Resolution unsatisfactory", value: "the previous resolution provided was not satisfactory" },
       { label: "Unprofessional service", value: "I am escalating this due to unprofessional service I received" }
     ]},
-    { key: "date", label: "Last contact date", type: "text", placeholder: "Feb 20" }
+    { key: "date", label: "Last contact date", type: "date", placeholder: "Select date" }
   ],
   education_request: [
     { key: "recipient", label: "Teacher / Professor name", type: "text", placeholder: "Professor Smith", required: true },
@@ -441,7 +446,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Technical issue", value: "I am experiencing unexpected technical difficulties" },
       { label: "Schedule conflict", value: "I have an unavoidable scheduling conflict" }
     ]},
-    { key: "date", label: "Date / Deadline", type: "text", placeholder: "Today" }
+    { key: "date", label: "Date / Deadline", type: "date", placeholder: "Select date" }
   ],
   sales_outreach: [
     { key: "recipient", label: "Prospect name", type: "text", placeholder: "Jordan Smith", required: true },
@@ -452,25 +457,26 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Follow up on inquiry", value: "I'm following up on your recent inquiry regarding our services" },
       { label: "Introduce new feature", value: "I wanted to introduce you to a new feature we've just launched" }
     ]},
-    { key: "date", label: "Proposed time", type: "text", placeholder: "Next Tuesday at 2pm" }
+    { key: "date", label: "Proposed date", type: "date", placeholder: "Select date" },
+    { key: "time", label: "Proposed time", type: "time" }
   ],
   billing_confirm: [
     { key: "recipient", label: "Company / Vendor", type: "text", placeholder: "Billing Dept", required: true },
     { key: "amount", label: "Amount paid", type: "amount", placeholder: "100.00", required: true },
     { key: "reference", label: "Invoice / Reference #", type: "text", placeholder: "INV-12345" },
-    { key: "date", label: "Payment date", type: "text", placeholder: "Yesterday" }
+    { key: "date", label: "Payment date", type: "date", placeholder: "Select date" }
   ],
   billing_confirm_payment: [
     { key: "recipient", label: "Company / Vendor", type: "text", placeholder: "Billing Dept", required: true },
     { key: "amount", label: "Amount paid", type: "amount", placeholder: "100.00", required: true },
     { key: "reference", label: "Invoice / Reference #", type: "text", placeholder: "INV-12345" },
-    { key: "date", label: "Payment date", type: "text", placeholder: "Yesterday" }
+    { key: "date", label: "Payment date", type: "date", placeholder: "Select date" }
   ],
   housing_receipt_req: [
     { key: "recipient", label: "Landlord / Manager name", type: "text", placeholder: "Property Management", required: true },
     { key: "reference", label: "Unit # / Address", type: "text", placeholder: "Apt 4B", required: true },
     { key: "amount", label: "Rent amount", type: "amount", placeholder: "1500" },
-    { key: "date", label: "Payment date / Period", type: "text", placeholder: "March 2026" }
+    { key: "date", label: "Payment date / Period", type: "date", placeholder: "Select date" }
   ],
   tech_login_issue: [
     { key: "recipient", label: "Service / App name", type: "text", placeholder: "SendDraft Support", required: true },
@@ -486,7 +492,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   travel_booking_change: [
     { key: "recipient", label: "Airline / Hotel / Agency", type: "text", placeholder: "Global Travel", required: true },
     { key: "reference", label: "Confirmation / PNR #", type: "text", placeholder: "ABC123", required: true },
-    { key: "date", label: "Original travel date", type: "text", placeholder: "March 15" },
-    { key: "reason", label: "Requested change", type: "text", placeholder: "Change to March 20" }
+    { key: "date", label: "Original travel date", type: "date", placeholder: "Select date" },
+    { key: "reason", label: "Requested change", type: "date", placeholder: "Select new date" }
   ]
 };

@@ -27,6 +27,15 @@
         '<textarea id="' + id + '" data-sd-field="' + esc(f.key) + '" placeholder="' + esc(f.placeholder || "") + '" ' + (isRequired ? 'required' : '') + '></textarea>' +
         '</div>';
     }
+
+    if (f.type === "time") {
+      const times = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
+      const btns = times.map(t => `<button type="button" class="timing-btn" data-sd-time-val="${t}">${t}</button>`).join("");
+      return base +
+        '<input type="hidden" id="' + id + '" data-sd-field="' + esc(f.key) + '" ' + (isRequired ? 'required' : '') + '>' +
+        '<div class="timing-row" data-sd-time-group="' + esc(f.key) + '">' + btns + '</div>' +
+        '</div>';
+    }
     
     if (f.type === "select") {
       const opts = (f.options || []).map(o => '<option value="' + esc(o.value) + '">' + esc(o.label) + '</option>').join("");
@@ -41,7 +50,9 @@
     const phLower = (f.placeholder || "").toLowerCase();
 
     if (f.type === "date" || keyLower.includes("date") || phLower.includes("date") || phLower.includes("yyyy-mm-dd")) {
-      cls = 'class="sd-date"';
+      return base +
+        '<input id="' + id + '" data-sd-field="' + esc(f.key) + '" type="date" class="sd-date" ' + (isRequired ? 'required' : '') + '/>' +
+        '</div>';
     } else if (f.type === "time" || keyLower.includes("time") || phLower.includes("hh:mm") || phLower.includes("time") || keyLower === 'time' || f.label.toLowerCase().includes("time")) {
       cls = 'class="sd-time"';
     }
@@ -140,6 +151,24 @@
 
       mount.innerHTML = html;
       mount.setAttribute("data-sd-loaded", "true");
+
+      // delegated listener for time buttons
+      mount.addEventListener("click", e => {
+        const btn = e.target.closest(".timing-btn");
+        if (btn) {
+          const group = btn.closest(".timing-row");
+          const key = group.dataset.timeGroup;
+          const val = btn.dataset.timeVal;
+          const hiddenInput = document.querySelector(`#f_${key}`);
+          
+          if (hiddenInput) {
+            hiddenInput.value = val;
+            group.querySelectorAll(".timing-btn").forEach(b => b.setAttribute("aria-pressed", "false"));
+            btn.setAttribute("aria-pressed", "true");
+            hiddenInput.dispatchEvent(new Event('input', { bubbles: true }));
+          }
+        }
+      });
     }
 
     const hint = document.querySelector("[data-sd-form-hint]");
