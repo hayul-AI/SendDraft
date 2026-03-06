@@ -10,13 +10,13 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Duplicate charge", value: "I was charged twice for this purchase" }
     ]},
     { key: "date", label: "Purchase date", type: "text", placeholder: "Mar 1, 2026", required: true },
-    { key: "reference", label: "Order / Reference #", type: "text", placeholder: "ORD-123", required: true },
+    { key: "reference", label: "Order / Reference #", type: "text", placeholder: "ORD-123" },
     { key: "amount", label: "Amount paid", type: "amount", placeholder: "49.99" },
     { key: "details", label: "Additional context (Optional)", type: "text", placeholder: "e.g. box was crushed" }
   ],
   invoice_payment: [
     { key: "recipient", label: "Recipient (Client/Co.)", type: "text", placeholder: "Example Client", required: true },
-    { key: "reference", label: "Invoice #", type: "text", placeholder: "INV-2026-001", required: true },
+    { key: "reference", label: "Invoice #", type: "text", placeholder: "INV-2026-001" },
     { key: "amount", label: "Amount due", type: "amount", placeholder: "1000", required: true },
     { key: "date", label: "Due date", type: "text", placeholder: "Mar 10, 2026", required: true },
     { key: "reason", label: "Payment Status", type: "select", options: [
@@ -39,7 +39,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   billing_dispute: [
     { key: "recipient", label: "Recipient (Company/Dept)", type: "text", placeholder: "Example Service", required: true },
-    { key: "reference", label: "Charge / Invoice Ref", type: "text", placeholder: "INV-12345", required: true },
+    { key: "reference", label: "Charge / Invoice Ref", type: "text", placeholder: "INV-12345" },
     { key: "reason", label: "Dispute Type", type: "select", required: true, options: [
       { label: "Duplicate charge", value: "I found a duplicate charge for the same service" },
       { label: "Incorrect amount", value: "the amount charged does not match my records" },
@@ -51,7 +51,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   account_action: [
     { key: "recipient", label: "Recipient (Company)", type: "text", placeholder: "Support Team", required: true },
-    { key: "reference", label: "Account ID / Login", type: "text", placeholder: "user@email.com", required: true },
+    { key: "reference", label: "Account ID / Login", type: "text", placeholder: "user@email.com" },
     { key: "reason", label: "Action Required", type: "select", required: true, options: [
       { label: "Cancel subscription", value: "I would like to cancel my current subscription" },
       { label: "Downgrade plan", value: "I wish to downgrade my account to a lower tier" },
@@ -71,7 +71,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Error message displayed", value: "I am receiving an error message during standard use" }
     ]},
     { key: "date", label: "When it happened", type: "text", placeholder: "Today", required: true },
-    { key: "reference", label: "Ticket / Account #", type: "text", placeholder: "Ref #123", required: true },
+    { key: "reference", label: "Ticket / Account #", type: "text", placeholder: "Ref #123" },
     { key: "amount", label: "Device / OS", type: "text", placeholder: "iOS / Chrome" }
   ],
   meeting: [
@@ -141,7 +141,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   bank_request: [
     { key: "recipient", label: "Bank / Institution", type: "text", placeholder: "Example Bank", required: true },
-    { key: "reference", label: "Account Ref (Last 4)", type: "text", placeholder: "...1234", required: true },
+    { key: "reference", label: "Account Ref (Last 4)", type: "text", placeholder: "...1234" },
     { key: "reason", label: "Request Type", type: "select", required: true, options: [
       { label: "Dispute a transaction", value: "I am writing to dispute a specific transaction on my account" },
       { label: "Update personal info", value: "I need to update my personal information on file" },
@@ -172,7 +172,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   bank_basic: [
     { key: "recipient", label: "Bank / Dept", type: "text", placeholder: "Example Bank", required: true },
-    { key: "reference", label: "Account # (Last 4)", type: "text", placeholder: "...5678", required: true },
+    { key: "reference", label: "Account # (Last 4)", type: "text", placeholder: "...5678" },
     { key: "reason", label: "Inquiry / Request", type: "select", required: true, options: [
       { label: "Account balance check", value: "I am requesting a formal statement of my current balance" },
       { label: "Close account", value: "I would like to initiate the process of closing this account" },
@@ -187,7 +187,7 @@ window.SENDDRAFT_FORM_PRESETS = {
       { label: "Update billing", value: "I need to update my billing information" },
       { label: "Account status check", value: "I am inquiring about the current status of my account" }
     ]},
-    { key: "reference", label: "Account ID", type: "text", placeholder: "alex@email.com", required: true },
+    { key: "reference", label: "Account ID", type: "text", placeholder: "alex@email.com" },
     { key: "date", label: "Relevant date", type: "text", placeholder: "Next month", required: true }
   ],
   purchase_basic: [
@@ -304,7 +304,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   housing_notice: [
     { key: "recipient", label: "Recipient (Landlord/Mgr)", type: "text", placeholder: "Property Management", required: true },
-    { key: "reference", label: "Unit # / Address", type: "text", placeholder: "Unit 101", required: true },
+    { key: "reference", label: "Unit # / Address", type: "text", placeholder: "Unit 101" },
     { key: "reason", label: "Notice Type", type: "select", required: true, options: [
       { label: "Move out notice", value: "I am providing my formal notice to vacate the premises" },
       { label: "Lease renewal inquiry", value: "I am interested in discussing the renewal of my current lease" },
@@ -314,7 +314,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   complaint_escalation: [
     { key: "recipient", label: "Recipient (Dept/Mgr)", type: "text", placeholder: "Support Manager", required: true },
-    { key: "reference", label: "Reference / Ticket #", type: "text", placeholder: "TKT-5678", required: true },
+    { key: "reference", label: "Reference / Ticket #", type: "text", placeholder: "TKT-5678" },
     { key: "reason", label: "Reason for Escalation", type: "select", required: true, options: [
       { label: "No response received", value: "I have not received any response to my previous inquiries" },
       { label: "Resolution unsatisfactory", value: "the previous resolution provided was not satisfactory" },
@@ -346,7 +346,7 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   travel_claim: [
     { key: "recipient", label: "Airline / Provider", type: "text", placeholder: "Example Airlines", required: true },
-    { key: "reference", label: "Booking / Flight #", type: "text", placeholder: "FL-12345", required: true },
+    { key: "reference", label: "Booking / Flight #", type: "text", placeholder: "FL-12345" },
     { key: "date", label: "Travel date", type: "text", placeholder: "Mar 1, 2026", required: true },
     { key: "reason", label: "Issue description", type: "select", required: true, options: [
       { label: "Flight delay", value: "my flight was significantly delayed" },

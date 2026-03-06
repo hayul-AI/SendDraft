@@ -37,9 +37,9 @@ function cleanGeneratedText(text) {
   let prev;
   do {
     prev = s;
-    s = s.replace(/\b(on|for|by|from|about|regarding|with|to|of|in|at|via|and)\s*([.,!?;:])/gi, "$2");
-    s = s.replace(/\b(for the amount|the amount|the amount of)\s*([.,!?;:])/gi, "$2");
-    s = s.replace(/\b(which I purchased|which was purchased)\s*([.,!?;:])/gi, "$2");
+    s = s.replace(/\b(on|for|by|from|about|regarding|with|to|of|in|at|via|and|flight|order|invoice|account|reference|ticket|subscription|ID|amount|date|reason)\s*([.,!?;:])/gi, "$2");
+    s = s.replace(/\b(for the amount|the amount|the amount of|of the amount|for order|regarding order|regarding invoice|regarding account|regarding flight|of flight)\s*([.,!?;:])/gi, "$2");
+    s = s.replace(/\b(which I purchased|which was purchased|purchased on)\s*([.,!?;:])/gi, "$2");
     s = s.replace(/\bRef:\s*([.,!?;:])/gi, "$1");
   } while (s !== prev);
 
@@ -47,8 +47,9 @@ function cleanGeneratedText(text) {
   s = s.replace(/\s+([.,!?;:])/g, "$1");
   s = s.replace(/([.,!?;:])\1+/g, "$1");
   s = s.replace(/,\s*\./g, ".");
+  s = s.replace(/\.{2,}/g, "."); // No double dots
 
-  // 5. Remove known broken empty sentences
+  // 5. Remove known broken empty sentences or fragments
   const emptySentences = [
     /The reason for my request is that\s*[.,]/gi,
     /This request is being made because\s*[.,]/gi,
@@ -59,7 +60,12 @@ function cleanGeneratedText(text) {
     /The reason for this is\s*[.,]/gi,
     /This is because\s*[.,]/gi,
     /The purchase was made\s*[.,]/gi,
-    /I purchased this\s*[.,]/gi
+    /I purchased this\s*[.,]/gi,
+    /which I purchased\s*[.,]/gi,
+    /originally sent\s*[.,]/gi,
+    /from our previous contact\s*[.,]/gi,
+    /I am writing to request a refund for\s*[.,]/gi,
+    /I am writing to request for\s*[.,]/gi
   ];
   for (const regex of emptySentences) {
     s = s.replace(regex, "");
@@ -68,12 +74,16 @@ function cleanGeneratedText(text) {
   // 6. Fix multiple spaces
   s = s.replace(/[ \t]{2,}/g, " ");
 
-  // 7. Fix excessive newlines
+  // 7. Fix excessive newlines - more aggressive
   s = s.replace(/\n\s*\n\s*\n+/g, "\n\n");
+  s = s.replace(/^\s+|\s+$/g, ""); // Trim start/end
   
   // 8. Cleanup leading/trailing spaces per line
   s = s.split('\n').map(line => line.trim()).join('\n');
 
+  // Final check for lone punctuation on a line
+  s = s.replace(/^\s*[.,!?;:]\s*$/gm, "");
+  
   return s.trim();
 }
 
@@ -254,6 +264,8 @@ function sd_init() {
     a.name = n;
     a.topic = t || ref || "";
     a.item = i || ref || t || "";
+    a.product = i || t || ref || ""; // Added explicit product
+    a.service = i || t || ref || ""; // Added explicit service
     a.reference = ref || t || i || "";
     a.date = d;
     a.amount = am;
@@ -320,7 +332,7 @@ function sd_init() {
     a.type_str = ref ? ` ${ref}` : "";
     a.store_str = ref ? ` at ${ref}` : "";
     a.project = ref || t || i;
-    a.service = i || ref;
+    a.service = i || ref || t;
     a.merchant = r;
     a.holder = n;
 
