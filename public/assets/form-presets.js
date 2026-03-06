@@ -178,9 +178,9 @@ window.SENDDRAFT_FORM_PRESETS = {
   ],
   condolence: [
     { key: "recipient", label: "Recipient name", type: "text", placeholder: "Jordan" },
-    { key: "reference", label: "Topic", type: "text", placeholder: "your loss" },
-    { key: "date", label: "Date", type: "text", placeholder: "Today" },
-    { key: "reason", label: "Message", type: "textarea", placeholder: "Holding you in my thoughts..." },
+    { key: "reference", label: "Name of the deceased", type: "text", placeholder: "their father / name" },
+    { key: "date", label: "Date (optional)", type: "text", placeholder: "Today" },
+    { key: "reason", label: "Personal message", type: "textarea", placeholder: "Sharing a memory or offering help..." },
     { key: "name", label: "Your name (Sender)", type: "text", placeholder: "Alex" }
   ],
   apology: [

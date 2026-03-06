@@ -239,9 +239,9 @@ I am contacting you to be clear about condolence message regarding [reference].
     defaultTone: "gentle",
     autoGenerate: true,
     templates: {
-      gentle: `Hi {{company}},\n\nI hope you're doing well. I wanted to reach out regarding condolence message for {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}Thinking of you,\n{{name}}`,
-      neutral: `Hello {{company}},\n\nI am writing about condolence message concerning {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}`,
-      firm: `Hello {{company}},\n\nI am contacting you to be clear about condolence message regarding {{reference}}.{{#reason}}\n\n{{reason}}\n\n{{/reason}}`
+      gentle: "Dear {{recipient}},\n\nI was so sorry to hear about the passing of {{reference}}.{{#date}} I know this has been a difficult time since {{date}}. {{/date}}Please know that I am thinking of you and your family during this incredibly difficult time.\n\n{{#reason}}{{reason}}\n\n{{/reason}}With deepest sympathy,\n{{name}}",
+      neutral: "Hello {{recipient}},\n\nI am writing to express my sincere condolences on the loss of {{reference}}.{{#date}} ({{date}}){{/date}}\n\n{{#reason}}{{reason}}\n\n{{/reason}}My thoughts are with you and your family.\n\nRegards,\n{{name}}",
+      firm: "Dear {{recipient}},\n\nPlease accept my heartfelt condolences regarding the passing of {{reference}}.{{#date}} My thoughts have been with you since {{date}}. {{/date}}\n\n{{#reason}}{{reason}}\n\n{{/reason}}I hope you find comfort in the cherished memories you shared. Please let me know if there is anything I can do to support you.\n\nSincerely,\n{{name}}"
     }
   };
   </script>
