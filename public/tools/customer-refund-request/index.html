@@ -55,11 +55,12 @@
       </div>
     </section>
 
-    <section class="grid">
-      <article class="card seven">
+    
+    <div class="tool-grid">
+      <section class="card tool-form-area">
         <h2 class="section-title">Create your message</h2>
         <p class="small">Fill a few details. Keep it short and factual for best results.</p>
-                <form class="form" data-sd-form>
+                <form class="form" data-sd-form novalidate>
           <div data-sd-form-mount></div>
           <div>
             <div class="section-title">Tone</div>
@@ -69,72 +70,45 @@
               <button class="tone" type="button" data-sd-tone data-tone="firm">Firm</button>
             </div>
           </div>
-          <div class="btnrow">
-            <button class="btn" data-sd-generate type="submit">Generate</button>
-            <button class="btn secondary" data-sd-clear type="button">Clear</button>
-          </div>
+          
         </form>
-        <hr class="sep" />
-        
+      </section>
+
+      <section class="card tool-result-area">
         <div data-sd-output-area style="display:none">
           <h2 class="section-title">Generated message</h2>
           <div class="output" data-sd-preview></div>
           <textarea class="sd-editbox" style="margin-top:16px" data-sd-result-textarea></textarea>
           <div class="btnrow" style="margin-top:16px">
             <button class="btn" data-sd-copy type="button">Copy</button>
+            <button class="btn secondary" data-sd-clear type="button">Reset</button>
           </div>
         </div>
         <div data-sd-output-placeholder>
           <h2 class="section-title">Your message</h2>
-          <div class="output">Fill the fields to generate a draft.</div>
+          <div class="output">Fill the required fields to generate your message.</div>
         </div>
-
-      </article>
-
-      <aside class="card five">
-        <h2 class="section-title">When to use this</h2>
-        <ul class="small">
-          <li>Request money back for a product that didn't meet expectations.</li>
-          <li>Ask for a refund due to a service failure or non-delivery.</li>
-          <li>Correct a billing error such as a duplicate charge.</li>
-        </ul>
-        <h2 class="section-title">Tips</h2>
-        <ul class="small">
-          <li>Always include your order number or reference if you have one.</li>
-          <li>Be clear about whether you want a full refund or store credit.</li>
-          <li>If you've already sent the item back, mention the return status.</li>
-        </ul>
-        <p class="notice"><b>Note:</b> SendDraft provides templates for convenience. This tool does not provide legal or professional advice.</p>
-      </aside>
-    </section>
+      </section>
+    </div>
 
     <section class="seo-block">
-      <h2>Professional Refund Requests</h2>
-      <p>A well-written refund request increases the likelihood of a quick resolution. By providing all necessary details—including the amount, date, and reason—you make it easier for the support team to process your claim.</p>
+      <h2>What this tool does</h2>
+      <p>This generator helps you quickly draft a professional refund request without needing to write everything from scratch. It structures the message clearly so the recipient knows exactly what you need.</p>
       
-      <h2>FAQ</h2>
-      <details>
-        <summary>Which tone should I use?</summary>
-        <p>Use **Gentle** if it's your first time reaching out or if you have a good history with the company. Use **Neutral** for standard professional requests. Use **Firm** if your previous attempts were ignored or if the issue is a clear error on their part.</p>
-      </details>
-      <details>
-        <summary>Do I need to return the item first?</summary>
-        <p>It depends on the company's policy. Most will require the item to be returned or for a return to be initiated before a refund is issued. Use the 'Return status' field to let them know where things stand.</p>
-      </details>
+      <h2>When to use this message</h2>
+      <p>Use this template when you need to send a refund request and want to maintain a standard, professional tone. It is ideal for ensuring all necessary details are included while keeping the communication brief and effective.</p>
 
-      <div class="disclaimer">
-        Please review before sending.<br>
-        No legal responsibility.<br>
-        This is a template-based service.
-      </div>
+      <h2>How to use the generator</h2>
+      <p>Simply fill out the required fields, select your desired tone (Gentle, Neutral, or Firm), and click generate. A plain-text message will be created below the form, which you can easily copy and paste into your email or messaging app.</p>
     </section>
 
     <section class="card" style="margin-top:24px">
       <h2 class="section-title">Related Tools</h2>
       <div class="grid">
-        <div style="grid-column:span 6"><a href="/tools/customer-refund-follow-up/" class="small" style="font-weight:700">Refund Follow-up →</a></div>
-        <div style="grid-column:span 6"><a href="/tools/customer-cancel-subscription/" class="small" style="font-weight:700">Cancel Subscription →</a></div>
-        <div style="grid-column:span 6"><a href="/tools/billing-billing-error-dispute/" class="small" style="font-weight:700">Billing Dispute Notice →</a></div>
+        <div style="grid-column:span 6"><a href="/tools/customer-cancel-order/" class="small" style="font-weight:700">Cancel Order Before Shipping →</a></div>
+<div style="grid-column:span 6"><a href="/tools/customer-refund-follow-up/" class="small" style="font-weight:700">Refund Follow-up →</a></div>
+<div style="grid-column:span 6"><a href="/tools/customer-cancel-subscription/" class="small" style="font-weight:700">Cancel Subscription →</a></div>
+<div style="grid-column:span 6"><a href="/tools/billing-billing-error-dispute/" class="small" style="font-weight:700">Billing Dispute Notice →</a></div>
       </div>
     </section>
 
@@ -173,9 +147,9 @@
       category: "customer",
       defaultTone: "gentle",
       templates: {
-        gentle: "Hi {{recipient}},\n\nI hope you're having a good day. I am writing to request {{res_str}} for {{item}}, which I purchased on {{date}} for {{amount}}{{ref_str}}.\n\nThe reason for my request is that {{issue_str}}.{{details_str}}\n\n{{status_str}}\n\nI'd appreciate your help in processing this request.{{contact_str}}\n\nThank you for your assistance.",
-        neutral: "Hello {{recipient}},\n\nI am writing to formally request {{res_str}} for {{item}}{{ref_str}}. The purchase was made on {{date}} for the amount of {{amount}}{{method_str}}.\n\nThis request is being made because {{issue_str}}.{{details_str}}\n\n{{status_str}}\n\nPlease let me know the next steps for completing this process.{{contact_str}}\n\nRegards.",
-        firm: "Hello {{recipient}},\n\nI am contacting you to demand {{res_str}} for {{item}}{{ref_str}}. I purchased this on {{date}} for {{amount}}.\n\nI am requesting this refund because {{issue_str}}.{{details_str}}\n\n{{status_str}}\n\nI expect this matter to be resolved promptly.{{contact_str}}\n\nThank you."
+        gentle: "Hi {{recipient}},\n\nI hope you're having a good day. I am writing to request {{res_str}} for {{item}}, which I purchased{{#date}} on {{date}}{{/date}}{{#amount}} for {{amount}}{{/amount}}{{#reference}} (Ref: {{reference}}){{/reference}}.\n\nThe reason for my request is that {{reason}}.{{#details}} {{details}}.{{/details}}\n\nI'd appreciate your help in processing this request.\n\nThank you for your assistance.",
+        neutral: "Hello {{recipient}},\n\nI am writing to formally request {{res_str}} for {{item}}{{#reference}} (Ref: {{reference}}){{/reference}}. The purchase was made{{#date}} on {{date}}{{/date}}{{#amount}} for the amount of {{amount}}{{/amount}}.\n\nThis request is being made because {{reason}}.{{#details}} {{details}}.{{/details}}\n\nPlease let me know the next steps for completing this process.\n\nRegards.",
+        firm: "Hello {{recipient}},\n\nI am contacting you to demand {{res_str}} for {{item}}{{#reference}} (Ref: {{reference}}){{/reference}}. I purchased this{{#date}} on {{date}}{{/date}}{{#amount}} for {{amount}}{{/amount}}.\n\nI am requesting this refund because {{reason}}.{{#details}} {{details}}.{{/details}}\n\nI expect this matter to be resolved promptly.\n\nThank you."
       }
     };
   </script>

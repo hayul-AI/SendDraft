@@ -4,13 +4,12 @@
   function renderField(f) {
     const id = "f_" + f.key;
     const isRequired = f.required || (window.TOOL_CONFIG && window.TOOL_CONFIG.requiredFields && window.TOOL_CONFIG.requiredFields.includes(f.key));
-    const requiredMark = isRequired ? '\n<span class="required-dot"></span>' : '';
+    const requiredMark = isRequired ? ' <span class="required-dot"></span>' : '';
 
     let base =
       '<div class="field">' +
       '<label for="' + id + '">' + esc(f.label) + requiredMark + '</label>';
 
-    // Strict amount rendering - only if explicitly typed as 'amount'
     if (f.type === "amount") {
       const currencies = ["USD", "EUR", "GBP", "CAD", "AUD", "NZD", "JPY", "KRW", "CNY", "HKD", "SGD", "INR", "BRL", "MXN", "CHF", "SEK", "NOK", "DKK", "PLN", "CZK", "HUF", "TRY", "ZAR", "AED", "SAR", "THB", "IDR", "PHP", "VND"];
       const opts = currencies.map(c => `<option value="${c}">${c}</option>`).join("");
@@ -28,19 +27,19 @@
         '<textarea id="' + id + '" data-sd-field="' + esc(f.key) + '" placeholder="' + esc(f.placeholder || "") + '" ' + (isRequired ? 'required' : '') + '></textarea>' +
         '</div>';
     }
+    
     if (f.type === "select") {
       const opts = (f.options || []).map(o => '<option value="' + esc(o.value) + '">' + esc(o.label) + '</option>').join("");
+      const emptyOpt = isRequired ? '<option value="" disabled selected>Select an option</option>' : '<option value="">(Optional)</option>';
       return base +
-        '<select id="' + id + '" data-sd-field="' + esc(f.key) + '" ' + (isRequired ? 'required' : '') + '>' + opts + '</select>' +
+        '<select id="' + id + '" data-sd-field="' + esc(f.key) + '" ' + (isRequired ? 'required' : '') + '>' + emptyOpt + opts + '</select>' +
         '</div>';
     }
 
-    // Date/Time picker support detection
     let cls = '';
     const keyLower = f.key.toLowerCase();
     const phLower = (f.placeholder || "").toLowerCase();
 
-    // Standardize to sd-date or sd-time
     if (f.type === "date" || keyLower.includes("date") || phLower.includes("date") || phLower.includes("yyyy-mm-dd")) {
       cls = 'class="sd-date"';
     } else if (f.type === "time" || keyLower.includes("time") || phLower.includes("hh:mm") || phLower.includes("time") || keyLower === 'time' || f.label.toLowerCase().includes("time")) {
@@ -59,7 +58,10 @@
       dateFormat: "F j, Y",
       allowInput: true,
       disableMobile: true,
-      onOpen: (s, d, i) => i.element.setAttribute("data-sd-picker", "1")
+      onOpen: (s, d, i) => i.element.setAttribute("data-sd-picker", "1"),
+      onChange: (selectedDates, dateStr, instance) => {
+        instance.element.dispatchEvent(new Event('input', { bubbles: true }));
+      }
     });
   }
 
@@ -74,13 +76,15 @@
       minuteIncrement: 1,
       allowInput: false,
       disableMobile: true,
-      onOpen: (s, d, i) => i.element.setAttribute("data-sd-picker", "1")
+      onOpen: (s, d, i) => i.element.setAttribute("data-sd-picker", "1"),
+      onChange: (selectedDates, dateStr, instance) => {
+        instance.element.dispatchEvent(new Event('input', { bubbles: true }));
+      }
     });
   }
 
   function initPickers() {
     if (typeof flatpickr === "undefined") {
-      // Inject Flatpickr CSS
       if (!document.getElementById("flatpickr-css")) {
         const link = document.createElement("link");
         link.id = "flatpickr-css";
@@ -88,7 +92,6 @@
         link.href = "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css";
         document.head.appendChild(link);
       }
-      // Inject Flatpickr JS
       const script = document.createElement("script");
       script.src = "https://cdn.jsdelivr.net/npm/flatpickr";
       script.onload = () => {
@@ -104,7 +107,6 @@
 
   function initToolForm() {
     if (!window.TOOL_CONFIG) {
-      console.warn("SendDraft: TOOL_CONFIG not found, retrying in 50ms...");
       setTimeout(initToolForm, 50);
       return;
     }
@@ -121,14 +123,28 @@
 
       presetKey = presetKey || "work_request";
       const preset = (window.SENDDRAFT_FORM_PRESETS && window.SENDDRAFT_FORM_PRESETS[presetKey]) || [];
-      mount.innerHTML = preset.map(renderField).join("");
+      
+      const reqFields = preset.filter(f => f.required);
+      const optFields = preset.filter(f => !f.required);
+
+      let html = '';
+      if (reqFields.length) {
+        html += reqFields.map(renderField).join("");
+      }
+      if (optFields.length) {
+        html += '<div style="margin-top:24px; padding-top:16px; border-top:1px dashed var(--border);">';
+        html += '<div class="section-title" style="font-size:14px; color:var(--sub); margin-bottom:16px;">Optional Details</div>';
+        html += optFields.map(renderField).join("");
+        html += '</div>';
+      }
+
+      mount.innerHTML = html;
       mount.setAttribute("data-sd-loaded", "true");
-      console.log("SendDraft: Form loaded for " + window.TOOL_CONFIG.slug + " with preset " + presetKey);
     }
 
     const hint = document.querySelector("[data-sd-form-hint]");
     if (hint) {
-      hint.textContent = window.TOOL_CONFIG.formHint || "Fill a few details. Keep it short and factual for best results.";
+      hint.textContent = window.TOOL_CONFIG.formHint || "Choose options to build your message. Quick and professional.";
     }
 
     initPickers();

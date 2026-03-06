@@ -55,11 +55,12 @@
       </div>
     </section>
 
-    <section class="grid">
-      <article class="card seven">
+    
+    <div class="tool-grid">
+      <section class="card tool-form-area">
         <h2 class="section-title">Create your message</h2>
         <p class="small">Fill a few details. Keep it short and factual for best results.</p>
-                <form class="form" data-sd-form>
+                <form class="form" data-sd-form novalidate>
           <div data-sd-form-mount></div>
           <div>
             <div class="section-title">Tone</div>
@@ -69,64 +70,36 @@
               <button class="tone" type="button" data-sd-tone data-tone="firm">Firm</button>
             </div>
           </div>
-          <div class="btnrow">
-            <button class="btn" data-sd-generate type="submit">Generate</button>
-            <button class="btn secondary" data-sd-clear type="button">Clear</button>
-          </div>
+          
         </form>
-        <hr class="sep" />
-        
+      </section>
+
+      <section class="card tool-result-area">
         <div data-sd-output-area style="display:none">
           <h2 class="section-title">Generated message</h2>
           <div class="output" data-sd-preview></div>
           <textarea class="sd-editbox" style="margin-top:16px" data-sd-result-textarea></textarea>
           <div class="btnrow" style="margin-top:16px">
             <button class="btn" data-sd-copy type="button">Copy</button>
+            <button class="btn secondary" data-sd-clear type="button">Reset</button>
           </div>
         </div>
         <div data-sd-output-placeholder>
           <h2 class="section-title">Your message</h2>
-          <div class="output">Fill the fields to generate a draft.</div>
+          <div class="output">Fill the required fields to generate your message.</div>
         </div>
-
-      </article>
-
-      <aside class="card five">
-        <h2 class="section-title">When to use this</h2>
-        <ul class="small">
-          <li>Check the status of a tax refund that is taking longer than expected.</li>
-          <li>Inquire about a missing refund after the processing window has passed.</li>
-          <li>Provide a formal record of your inquiry to a tax authority.</li>
-        </ul>
-        <h2 class="section-title">Tips</h2>
-        <ul class="small">
-          <li>Check the official "Where's My Refund" portal if available before inquiring.</li>
-          <li>Include your tax year and any reference numbers for faster processing.</li>
-          <li>Be patient but persistent if your refund is significantly delayed.</li>
-        </ul>
-        <p class="notice"><b>Note:</b> SendDraft provides templates for convenience. This tool does not provide tax or legal advice.</p>
-      </aside>
-    </section>
+      </section>
+    </div>
 
     <section class="seo-block">
-      <h2>Inquiring About Tax Refund Delays</h2>
-      <p>Waiting for a tax refund can be stressful, especially if you have plans for the funds. While tax authorities often have high volumes of returns to process, delays can occur for various reasons. A professional inquiry helps you stay informed and ensures that any potential issues with your return are identified and addressed. These templates provide a structured way to ask for an update on your refund status.</p>
+      <h2>What this tool does</h2>
+      <p>This generator helps you quickly draft a professional tax refund delay inquiry without needing to write everything from scratch. It structures the message clearly so the recipient knows exactly what you need.</p>
       
-      <h2>FAQ</h2>
-      <details>
-        <summary>How long should I wait before inquiring?</summary>
-        <p>Most tax authorities recommend waiting at least 21 days for electronically filed returns and up to 6 weeks or more for paper-filed returns before checking the status or inquiring about a delay.</p>
-      </details>
-      <details>
-        <summary>What information should I have ready?</summary>
-        <p>You should have your tax year, filing date, and the exact refund amount from your return. If you have a filing confirmation number or ID, include that as well to help the agent locate your file.</p>
-      </details>
+      <h2>When to use this message</h2>
+      <p>Use this template when you need to send a tax refund delay inquiry and want to maintain a standard, professional tone. It is ideal for ensuring all necessary details are included while keeping the communication brief and effective.</p>
 
-      <div class="disclaimer">
-        Please review before sending.<br>
-        No legal responsibility.<br>
-        This is a template-based service.
-      </div>
+      <h2>How to use the generator</h2>
+      <p>Simply fill out the required fields, select your desired tone (Gentle, Neutral, or Firm), and click generate. A plain-text message will be created below the form, which you can easily copy and paste into your email or messaging app.</p>
     </section>
 
 <footer class="footer">
@@ -168,7 +141,7 @@
 
 I hope you're having a good day. I'm reaching out to inquire about the status of my tax refund for the {{year}} tax year.
 
-My name is {{name}}, and I filed my return {{date_str}}. The expected refund amount is {{amount}}{{method_str}}{{ref_str}}.
+My name is , and I filed my return {{date_str}}. The expected refund amount is {{amount}}{{method_str}}{{ref_str}}.
 
 I was wondering if you could please provide an update on the current status of my refund. {{details_str}}{{contact_str}}
 
@@ -177,7 +150,7 @@ Thank you for your assistance.`,
 
 I am contacting you to check on the status of my tax refund for {{year}}.
 
-Taxpayer name: {{name}}. {{date_str_neutral}} Expected refund: {{amount}}. {{method_str_neutral}}{{ref_str_neutral}}
+Taxpayer name: . {{date_str_neutral}} Expected refund: {{amount}}. {{method_str_neutral}}{{ref_str_neutral}}
 
 I would appreciate an update on when I can expect to receive the refund. {{details_str}}{{contact_str}}
 
@@ -186,7 +159,7 @@ Thank you for your assistance.`,
 
 This is an inquiry regarding the delay of my tax refund for the {{year}} tax year.
 
-The taxpayer is {{name}}. The return was filed {{date_str_firm}} for an expected amount of {{amount}}. {{ref_str_firm}}
+The taxpayer is . The return was filed {{date_str_firm}} for an expected amount of {{amount}}. {{ref_str_firm}}
 
 I am requesting a formal update on the status of this refund and an explanation for the delay. {{details_str}}{{contact_str}}
 

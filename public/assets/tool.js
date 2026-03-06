@@ -227,22 +227,11 @@ function sd_init() {
   const preview = document.querySelector("[data-sd-preview]");
   const textarea = document.querySelector("[data-sd-result-textarea]");
   const copyBtn = document.querySelector("[data-sd-copy]");
-  const genBtn = document.querySelector("[data-sd-generate]");
   const clearBtn = document.querySelector("[data-sd-clear]");
   const toneBtns = Array.from(document.querySelectorAll("[data-sd-tone]"));
 
   let tone = window.TOOL_CONFIG.defaultTone || "gentle";
   sd_setTone(toneBtns, tone);
-
-  toneBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      tone = btn.dataset.tone;
-      sd_setTone(toneBtns, tone);
-      if (outArea && outArea.style.display !== "none") {
-        gen();
-      }
-    });
-  });
 
   function hl(val) {
     if (!val || !String(val).trim()) return "";
@@ -351,19 +340,20 @@ function sd_init() {
   function gen() {
     if (!form) return;
 
-    let isValid = true;
+    let allRequiredFilled = true;
     form.querySelectorAll("[required]").forEach(el => {
       if (!el.value.trim()) {
-        isValid = false;
-        el.style.borderColor = "#dc2626";
-        el.style.boxShadow = "0 0 0 3px rgba(220, 38, 38, 0.15)";
-      } else {
-        el.style.borderColor = "";
-        el.style.boxShadow = "";
+        allRequiredFilled = false;
       }
     });
 
-    if (!isValid) return;
+    if (!allRequiredFilled) {
+      if (preview) preview.innerHTML = '<span style="color: var(--sub); font-style: italic;">Fill the required fields to generate your message.</span>';
+      if (textarea) textarea.value = "";
+      if (outArea) outArea.style.display = "none";
+      if (outPlaceholder) outPlaceholder.style.display = "block";
+      return;
+    }
 
     const rawData = sd_collect(form);
 
@@ -400,28 +390,31 @@ function sd_init() {
     resultText = resultText.replace(/\\n/g, "\n");
 
     if (preview) {
-      preview.innerHTML = resultHtml || "Fill the fields to generate a draft.";
+      preview.innerHTML = resultHtml;
       if (textarea) {
         textarea.value = resultText;
       }
       if (outArea) {
-        outArea.style.display = resultText ? "block" : "none";
-        if (outPlaceholder) outPlaceholder.style.display = resultText ? "none" : "block";
+        outArea.style.display = "block";
+        if (outPlaceholder) outPlaceholder.style.display = "none";
       }
     }
   }
 
-  genBtn && genBtn.addEventListener("click", (e) => { e.preventDefault(); gen(); });
+  toneBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      tone = btn.dataset.tone;
+      sd_setTone(toneBtns, tone);
+      gen();
+    });
+  });
 
   clearBtn && clearBtn.addEventListener("click", (e) => {
     e.preventDefault();
     form.reset();
-    if (preview) preview.innerHTML = "";
-    if (textarea) textarea.value = "";
-    if (outArea) outArea.style.display = "none";
-    if (outPlaceholder) outPlaceholder.style.display = "block";
     tone = window.TOOL_CONFIG.defaultTone || "gentle";
     sd_setTone(toneBtns, tone);
+    gen();
   });
 
   copyBtn && copyBtn.addEventListener("click", async (e) => {
@@ -438,24 +431,17 @@ function sd_init() {
     }
   });
 
-  if (window.TOOL_CONFIG.autoGenerate !== false) {
-    form && form.addEventListener("input", (e) => {
-      if (e.target.hasAttribute("required") && e.target.value.trim()) {
-        e.target.style.borderColor = "";
-        e.target.style.boxShadow = "";
-      }
-      const rawData = sd_collect(form);
-      const hasAny = Object.values(rawData).some(v => String(v || "").trim().length > 0);
-      if (hasAny && outArea && outArea.style.display !== "none") gen();
-    });
-  } else {
-    form && form.addEventListener("input", (e) => {
-      if (e.target.hasAttribute("required") && e.target.value.trim()) {
-        e.target.style.borderColor = "";
-        e.target.style.boxShadow = "";
-      }
-    });
+  if (form) {
+    form.addEventListener("input", gen);
+    form.addEventListener("change", gen);
   }
+
+  // Hook into SD pickers if they exist
+  // We can poll or use a proxy, but flatpickr has an onChange hook.
+  // tool-ui.js initializes flatpickr.
+  // Let's add a global callback for flatpickr in tool-ui.js if needed, 
+  // or just handle it here by checking the inputs periodically? 
+  // Better: let tool-ui.js trigger a change event.
 }
 
 document.addEventListener("DOMContentLoaded", sd_init);

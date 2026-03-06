@@ -55,11 +55,12 @@
       </div>
     </section>
 
-    <section class="grid">
-      <article class="card seven">
+    
+    <div class="tool-grid">
+      <section class="card tool-form-area">
         <h2 class="section-title">Create your message</h2>
         <p class="small">Fill a few details. Keep it short and factual for best results.</p>
-                <form class="form" data-sd-form>
+                <form class="form" data-sd-form novalidate>
           <div data-sd-form-mount></div>
           <div>
             <div class="section-title">Tone</div>
@@ -69,64 +70,36 @@
               <button class="tone" type="button" data-sd-tone data-tone="firm">Firm</button>
             </div>
           </div>
-          <div class="btnrow">
-            <button class="btn" data-sd-generate type="submit">Generate</button>
-            <button class="btn secondary" data-sd-clear type="button">Clear</button>
-          </div>
+          
         </form>
-        <hr class="sep" />
-        
+      </section>
+
+      <section class="card tool-result-area">
         <div data-sd-output-area style="display:none">
           <h2 class="section-title">Generated message</h2>
           <div class="output" data-sd-preview></div>
           <textarea class="sd-editbox" style="margin-top:16px" data-sd-result-textarea></textarea>
           <div class="btnrow" style="margin-top:16px">
             <button class="btn" data-sd-copy type="button">Copy</button>
+            <button class="btn secondary" data-sd-clear type="button">Reset</button>
           </div>
         </div>
         <div data-sd-output-placeholder>
           <h2 class="section-title">Your message</h2>
-          <div class="output">Fill the fields to generate a draft.</div>
+          <div class="output">Fill the required fields to generate your message.</div>
         </div>
-
-      </article>
-
-      <aside class="card five">
-        <h2 class="section-title">When to use this</h2>
-        <ul class="small">
-          <li>Dispute an account that doesn't belong to you on your report.</li>
-          <li>Correct an incorrect balance or payment status.</li>
-          <li>Request removal of old or inaccurate derogatory items.</li>
-        </ul>
-        <h2 class="section-title">Tips</h2>
-        <ul class="small">
-          <li>Be specific about which item and which agency you are contacting.</li>
-          <li>Mention any proof you have, such as bank statements or identity docs.</li>
-          <li>Keep your explanation clear and stick to the facts.</li>
-        </ul>
-        <p class="notice"><b>Note:</b> SendDraft provides templates for convenience. This tool does not provide legal or professional advice.</p>
-      </aside>
-    </section>
+      </section>
+    </div>
 
     <section class="seo-block">
-      <h2>Credit Dispute Basics</h2>
-      <p>Under federal law (like the FCRA in the US), you have the right to dispute any information on your credit report that you believe is inaccurate. The reporting agency is required to investigate your claim and correct or remove any information that cannot be verified. A formal, written dispute is the most effective way to start this process.</p>
+      <h2>What this tool does</h2>
+      <p>This generator helps you quickly draft a professional credit report error dispute without needing to write everything from scratch. It structures the message clearly so the recipient knows exactly what you need.</p>
       
-      <h2>FAQ</h2>
-      <details>
-        <summary>How long does a credit dispute take?</summary>
-        <p>In most cases, credit bureaus have 30 days to investigate and respond to your dispute. If they find the information is indeed inaccurate, they must update your report immediately.</p>
-      </details>
-      <details>
-        <summary>What documents should I provide?</summary>
-        <p>Supporting documents like monthly statements, payment receipts, or a copy of your ID can significantly speed up the investigation process by providing immediate verification of your claim.</p>
-      </details>
+      <h2>When to use this message</h2>
+      <p>Use this template when you need to send a credit report error dispute and want to maintain a standard, professional tone. It is ideal for ensuring all necessary details are included while keeping the communication brief and effective.</p>
 
-      <div class="disclaimer">
-        Please review before sending.<br>
-        No legal responsibility.<br>
-        This is a template-based service.
-      </div>
+      <h2>How to use the generator</h2>
+      <p>Simply fill out the required fields, select your desired tone (Gentle, Neutral, or Firm), and click generate. A plain-text message will be created below the form, which you can easily copy and paste into your email or messaging app.</p>
     </section>
 
 <footer class="footer">
@@ -168,7 +141,7 @@
 
 I hope you're having a good day. I am writing to you regarding my credit report, as I have noticed some inaccurate information that I would like to dispute.
 
-My name is {{name}}, and the item in question is {{item}}{{ref_str}}. {{date_str}}
+My name is , and the item in question is {{item}}{{ref_str}}. {{date_str}}
 
 It appears that {{issue_str}}. {{amount_str}}{{correct_str}}
 
@@ -177,7 +150,7 @@ I would appreciate it if you could {{res_str}}. {{docs_str}}{{details_str}}{{con
 Thank you for your assistance in resolving this matter.`,
         neutral: `Hello {{recipient}},
 
-I am contacting you to formally dispute inaccurate information appearing on my credit report for {{name}}.
+I am contacting you to formally dispute inaccurate information appearing on my credit report for .
 
 The item I am disputing is {{item}}{{ref_str}}. {{date_str}}
 
@@ -188,7 +161,7 @@ Please {{res_str}} as soon as possible. {{docs_str}}{{details_str}}{{contact_str
 Thank you for your assistance.`,
         firm: `Hello {{recipient}},
 
-This message serves as a formal dispute of inaccurate information on the credit report of {{name}}.
+This message serves as a formal dispute of inaccurate information on the credit report of .
 
 I am disputing the following item: {{item}}{{ref_str}}. {{date_str}}
 

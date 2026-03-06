@@ -158,6 +158,34 @@ a:hover {
   border-color: rgba(5, 150, 105, 0.3);
 }
 
+/* Structural Two-Column Tool Layout */
+.tool-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .tool-grid {
+    flex-direction: row;
+    align-items: start;
+  }
+  .tool-form-area {
+    flex: 1.2; /* roughly 55% */
+  }
+  .tool-result-area {
+    flex: 1; /* roughly 45% */
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.tool-result-area {
+  background: var(--soft) !important;
+}
+
 @media(min-width:900px) {
   .card.two {
     grid-column: span 6;

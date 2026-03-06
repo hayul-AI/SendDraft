@@ -1,21 +1,24 @@
 window.SENDDRAFT_CATEGORIES = [
-  { key: "work", name: "Work & Office", desc: "Follow-ups, scheduling, status updates, boundaries." },
-  { key: "hr", name: "Jobs & HR", desc: "Job hunting, interview, offers, resignation, referrals." },
-  { key: "tech-support", name: "Accounts & Tech", desc: "Account access, bug reports, feature requests, data deletion." },
-  { key: "notices", name: "Contracts & Formal", desc: "Legal-adjacent notices, formal document requests, intent to file." },
-  { key: "housing", name: "Housing & Living", desc: "Landlord/tenant requests, repairs, noise complaints." },
-  { key: "travel", name: "Travel & Booking", desc: "Flights, hotel refunds, delays, insurance claims." },
-  { key: "freelance", name: "Business & Freelance", desc: "Client management, scope changes, late payments, proposals." },
-  { key: "education", name: "School & University", desc: "Teacher messages, enrollment, extensions, recommendations." },
-  { key: "relationships", name: "Personal Messages", desc: "Condolences, thank you, breakup, reconnection messages." },
-  { key: "sales", name: "Sales & Outreach", desc: "Cold outreach, demos, quotes, renewals." },
-  { key: "banking", name: "Banking & Finance", desc: "Credit, loans, fee waivers, unauthorized charges." },
+  { key: "customer", name: "Customer Support", desc: "Refunds, damaged items, return requests." },
   { key: "billing", name: "Invoices & Billing", desc: "Payment reminders, billing disputes, receipts." },
-  { key: "customer", name: "Customer Support", desc: "Refunds, damaged items, return requests." }
+  { key: "work", name: "Work & Office", desc: "Follow-ups, scheduling, status updates, boundaries." },
+  { key: "freelance", name: "Business & Freelance", desc: "Client management, scope changes, late payments, proposals." },
+  { key: "hr", name: "Jobs & HR", desc: "Job hunting, interview, offers, resignation, referrals." },
+  { key: "banking", name: "Banking & Finance", desc: "Credit, loans, fee waivers, unauthorized charges." },
+  { key: "travel", name: "Travel & Booking", desc: "Flights, hotel refunds, delays, insurance claims." },
+  { key: "tech-support", name: "Accounts & Tech", desc: "Account access, bug reports, feature requests, data deletion." },
+  { key: "housing", name: "Housing & Living", desc: "Landlord/tenant requests, repairs, noise complaints." },
+  { key: "sales", name: "Sales & Outreach", desc: "Cold outreach, demos, quotes, renewals." },
+  { key: "education", name: "School & University", desc: "Teacher messages, enrollment, extensions, recommendations." },
+  { key: "notices", name: "Contracts & Formal", desc: "Legal-adjacent notices, formal document requests, intent to file." },
+  { key: "relationships", name: "Personal Messages", desc: "Condolences, thank you, breakup, reconnection messages." }
 ];
 
 window.SENDDRAFT_TOOLS = [
   // CUSTOMER (15)
+  { slug: "customer-request-return-label", title: "Request Return Label", category: "customer", intent: "ask for return shipping label", formPreset: "purchase_issue" },
+  { slug: "customer-replacement-request", title: "Replacement Request", category: "customer", intent: "request product replacement", formPreset: "purchase_issue" },
+  { slug: "customer-cancel-order", title: "Cancel Order Before Shipping", category: "customer", intent: "cancel order message", formPreset: "purchase_basic" },
   { slug: "customer-refund-request", title: "Refund Request", category: "customer", intent: "refund request message", formPreset: "purchase_issue" },
   { slug: "customer-refund-follow-up", title: "Refund Follow-up", category: "customer", intent: "refund follow up message", formPreset: "purchase_issue" },
   { slug: "customer-partial-refund-request", title: "Partial Refund Request", category: "customer", intent: "partial refund message", formPreset: "purchase_issue" },
@@ -55,6 +58,9 @@ window.SENDDRAFT_TOOLS = [
   { slug: "billing-quote-request", title: "Quote Request", category: "billing", intent: "request a quote message", formPreset: "invoice_request" },
 
   // WORK (15)
+  { slug: "work-request-approval", title: "Request Approval", category: "work", intent: "ask for formal approval", formPreset: "work_request" },
+  { slug: "work-meeting-follow-up-summary", title: "Meeting Follow-up Summary", category: "work", intent: "send summary after meeting", formPreset: "meeting" },
+  { slug: "work-confirm-meeting-attendance", title: "Confirm Meeting Attendance", category: "work", intent: "confirm joining a meeting", formPreset: "meeting" },
   { slug: "work-follow-up-no-response", title: "Follow-up Message (No Response)", category: "work", intent: "follow up message no response", formPreset: "follow_up" },
   { slug: "work-second-follow-up", title: "Second Follow-up", category: "work", intent: "second follow up message", formPreset: "follow_up" },
   { slug: "work-meeting-request", title: "Meeting Request", category: "work", intent: "meeting request message", formPreset: "meeting" },
@@ -74,6 +80,8 @@ window.SENDDRAFT_TOOLS = [
   { slug: "work-boundary-after-hours", title: "After-hours Boundary", category: "work", intent: "set boundaries after hours message", formPreset: "boundary" },
 
   // FREELANCE (15)
+  { slug: "freelance-client-check-in", title: "Client Check-in Message", category: "freelance", intent: "brief check in with existing client", formPreset: "follow_up" },
+  { slug: "freelance-confirm-payment-received", title: "Confirm Payment Received", category: "freelance", intent: "notify client payment received", formPreset: "invoice_payment" },
   { slug: "freelance-proposal-follow-up", title: "Proposal Follow-up", category: "freelance", intent: "proposal follow up message", formPreset: "follow_up" },
   { slug: "freelance-client-onboarding", title: "Client Onboarding", category: "freelance", intent: "client onboarding message", formPreset: "work_request" },
   { slug: "freelance-contract-follow-up", title: "Contract Follow-up", category: "freelance", intent: "contract follow up message", formPreset: "follow_up" },
@@ -91,6 +99,8 @@ window.SENDDRAFT_TOOLS = [
   { slug: "freelance-end-contract-politely", title: "End Contract Politely", category: "freelance", intent: "end contract message", formPreset: "boundary" },
 
   // HOUSING (10)
+  { slug: "housing-request-rent-receipt", title: "Request Rent Receipt", category: "housing", intent: "ask for proof of rent payment", formPreset: "housing_notice" },
+  { slug: "housing-maintenance-delay-follow-up", title: "Maintenance Delay Follow-up", category: "housing", intent: "follow up on delayed repair", formPreset: "housing_request" },
   { slug: "housing-repair-request", title: "Repair Request to Landlord", category: "housing", intent: "repair request message landlord", formPreset: "housing_request" },
   { slug: "housing-repair-follow-up", title: "Repair Request Follow-up", category: "housing", intent: "repair follow up message", formPreset: "housing_request" },
   { slug: "housing-move-out-notice", title: "Move-out Notice", category: "housing", intent: "move out notice message", formPreset: "housing_notice" },
@@ -139,6 +149,9 @@ window.SENDDRAFT_TOOLS = [
   { slug: "sales-event-invitation", title: "Event Invitation", category: "sales", intent: "invite to webinar or event", formPreset: "sales_outreach" },
 
   // HR (10)
+  { slug: "hr-offer-decline", title: "Offer Decline", category: "hr", intent: "formally decline job offer", formPreset: "hr_recruiting" },
+  { slug: "hr-offer-acceptance", title: "Offer Acceptance", category: "hr", intent: "formally accept job offer", formPreset: "hr_recruiting" },
+  { slug: "hr-job-application-follow-up", title: "Job Application Follow-up", category: "hr", intent: "check status of job application", formPreset: "follow_up" },
   { slug: "hr-interview-invitation", title: "Interview Invitation", category: "hr", intent: "invite candidate to interview", formPreset: "hr_standard" },
   { slug: "hr-job-offer-email", title: "Job Offer", category: "hr", intent: "send job offer message", formPreset: "hr_recruiting" },
   { slug: "hr-rejection-after-interview", title: "Job Rejection (Post-Interview)", category: "hr", intent: "reject candidate politely", formPreset: "hr_standard" },
@@ -151,6 +164,8 @@ window.SENDDRAFT_TOOLS = [
   { slug: "hr-referral-introduction", title: "Employee Referral Introduction", category: "hr", intent: "refer a friend for a job", formPreset: "hr_standard" },
 
   // TRAVEL (10)
+  { slug: "travel-flight-change-request", title: "Flight Change Request", category: "travel", intent: "request change to flight booking", formPreset: "travel_claim" },
+  { slug: "travel-hotel-late-check-out", title: "Hotel Late Check-out Request", category: "travel", intent: "ask for later check out time", formPreset: "travel_claim" },
   { slug: "travel-flight-delay-complaint", title: "Flight Delay Complaint", category: "travel", intent: "complain about flight delay", formPreset: "travel_claim" },
   { slug: "travel-lost-luggage-claim", title: "Lost Luggage Claim", category: "travel", intent: "report lost baggage", formPreset: "travel_claim" },
   { slug: "travel-hotel-refund-request", title: "Hotel Refund Request", category: "travel", intent: "request hotel refund", formPreset: "travel_claim" },

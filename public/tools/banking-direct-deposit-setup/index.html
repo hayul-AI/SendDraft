@@ -52,11 +52,12 @@
       </div>
     </section>
 
-    <section class="grid">
-      <article class="card seven">
+    
+    <div class="tool-grid">
+      <section class="card tool-form-area">
         <h2 class="section-title">Create your message</h2>
         <p class="small" data-sd-form-hint></p>
-        <form class="form" data-sd-form>
+        <form class="form" data-sd-form novalidate>
           <div data-sd-form-mount></div>
           <div>
             <div class="section-title">Tone</div>
@@ -66,120 +67,36 @@
               <button class="tone" type="button" data-sd-tone data-tone="firm">Firm</button>
             </div>
           </div>
-          <div class="btnrow">
-            <button class="btn" data-sd-generate type="submit">Generate</button>
-            <button class="btn secondary" data-sd-clear type="button">Clear</button>
-          </div>
+          
         </form>
-        <hr class="sep" />
+      </section>
+
+      <section class="card tool-result-area">
         <div data-sd-output-area style="display:none">
           <h2 class="section-title">Generated message</h2>
           <div class="output" data-sd-preview></div>
           <textarea class="sd-editbox" style="margin-top:16px" data-sd-result-textarea></textarea>
           <div class="btnrow" style="margin-top:16px">
             <button class="btn" data-sd-copy type="button">Copy</button>
+            <button class="btn secondary" data-sd-clear type="button">Reset</button>
           </div>
         </div>
         <div data-sd-output-placeholder>
           <h2 class="section-title">Your message</h2>
-          <div class="output">Fill the fields to generate a draft.</div>
+          <div class="output">Fill the required fields to generate your message.</div>
         </div>
-      </article>
-
-      <aside class="card five">
-        <h2 class="section-title">When to use this</h2>
-        <ul class="small">
-          <li>You need a professional starting point for a setup payroll deposit.</li>
-          <li>You want to ensure you don't forget important details.</li>
-          <li>You need to adjust your tone for better results.</li>
-        </ul>
-        <h2 class="section-title">Tips</h2>
-        <ul class="small">
-          <li>Keep the reason field concise and factual.</li>
-          <li>Include reference numbers for faster processing.</li>
-          <li>Choose a tone that matches your previous interactions.</li>
-        </ul>
-        <p class="notice"><b>Note:</b> SendDraft provides templates for convenience. This tool does not provide legal or professional advice.</p>
-      </aside>
-    </section>
+      </section>
+    </div>
 
     <section class="seo-block">
-      <h2>When to use this template</h2>
-      <p>Communication is key in any professional or personal situation. Using a setup payroll deposit helps you express your needs clearly and effectively without overexplaining.</p>
-      <p>Our Direct Deposit Setup Request is designed to provide you with a high-quality starting point. Whether you need to be soft and approachable or firm and direct, these templates ensure you hit the right note every time.</p>
+      <h2>What this tool does</h2>
+      <p>This generator helps you quickly draft a professional direct deposit setup request without needing to write everything from scratch. It structures the message clearly so the recipient knows exactly what you need.</p>
+      
+      <h2>When to use this message</h2>
+      <p>Use this template when you need to send a direct deposit setup request and want to maintain a standard, professional tone. It is ideal for ensuring all necessary details are included while keeping the communication brief and effective.</p>
 
-      <h2>Quick example (copy-ready)</h2>
-      <div class="sample-grid">
-                <div class="sample-card">
-          <div class="sample-label">Gentle</div>
-          <pre class="sample-text">Hi [company] Team,
-
-I hope your week is going well. I'm reaching out about setup payroll deposit for [reference] ([date]).
-
-[reason]
-
-I'd appreciate your help with this when you have a moment. Thank you!
-
-
-[name]</pre>
-        </div>
-        <div class="sample-card">
-          <div class="sample-label">Neutral</div>
-          <pre class="sample-text">Hello [company],
-
-I am writing regarding setup payroll deposit for [reference] from [date].
-
-[reason]
-
-Please let me know the current status or next steps.
-
-</pre>
-        </div>
-        <div class="sample-card">
-          <div class="sample-label">Firm</div>
-          <pre class="sample-text">Hello [company],
-
-I am formally contacting you regarding setup payroll deposit for [reference] ([date]).
-
-[reason]
-
-I expect a response on this matter by [date]. Thank you for your prompt attention.
-
-</pre>
-        </div>
-
-      </div>
-
-      <h2>Tips for better results</h2>
-      <ul>
-        <li>Include all relevant reference numbers or dates for clarity.</li>
-        <li>Choose a tone that matches your previous interactions with the recipient.</li>
-        <li>Keep your message concise and focused on the desired outcome.</li>
-        <li>Double-check for any typos or missing details before sending.</li>
-        <li>Be specific about any deadlines or next steps you expect.</li>
-      </ul>
-
-      <h2>FAQ</h2>
-      <details>
-        <summary>How do I use this setup payroll deposit?</summary>
-        <p>Simply fill in the required fields in the form above, select your preferred tone (Gentle, Neutral, or Firm), and click 'Generate'. You can then copy the draft and paste it into your messaging app.</p>
-      </details>
-      <details>
-        <summary>Can I customize the generated message?</summary>
-        <p>Yes! Once you copy the text, you can paste it into your preferred messaging platform and make any final adjustments or additions to fit your specific needs.</p>
-      </details>
-      <details>
-        <summary>Which tone is right for me?</summary>
-        <p>Use **Gentle** for first-time requests or when maintaining a friendly relationship is a priority. Use **Neutral** for standard business matters. Use **Firm** for urgent issues or when previous requests have been ignored.</p>
-      </details>
-      <details>
-        <summary>Is my information safe?</summary>
-        <p>Absolutely. SendDraft is a static tool, meaning everything happens locally in your browser. We do not store or see any of the information you enter into the form.</p>
-      </details>
-
-      <div class="disclaimer">
-        Templates only. Not legal, financial, medical, or HR advice. Always adapt to your situation and local rules.
-      </div>
+      <h2>How to use the generator</h2>
+      <p>Simply fill out the required fields, select your desired tone (Gentle, Neutral, or Firm), and click generate. A plain-text message will be created below the form, which you can easily copy and paste into your email or messaging app.</p>
     </section>
 
     <section class="card" style="margin-top:24px">
@@ -189,8 +106,6 @@ I expect a response on this matter by [date]. Thank you for your prompt attentio
 <div style="grid-column:span 6"><a href="/tools/banking-unauthorized-charge-dispute/" class="small" style="font-weight:700">Unauthorized Charge Dispute →</a></div>
 <div style="grid-column:span 6"><a href="/tools/banking-account-closure-request/" class="small" style="font-weight:700">Account Closure Request →</a></div>
 <div style="grid-column:span 6"><a href="/tools/customer-refund-request/" class="small" style="font-weight:700">Refund Request →</a></div>
-<div style="grid-column:span 6"><a href="/tools/customer-refund-follow-up/" class="small" style="font-weight:700">Refund Follow-up →</a></div>
-
       </div>
     </section>
 
