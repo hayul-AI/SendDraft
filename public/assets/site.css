@@ -1088,3 +1088,35 @@ select[required] {
   font-weight: 600;
   border: 1px solid #bbf7d0;
 }
+
+/* Flatpickr Time Picker Customization */
+.flatpickr-time input:focus {
+  background: #f0fdf4 !important;
+  color: #16a34a !important;
+  font-weight: 700;
+}
+
+.flatpickr-time .numInputWrapper:hover {
+  background: #f0fdf4 !important;
+}
+
+.flatpickr-calendar.hasTime .flatpickr-time {
+  border-top: 1px solid var(--border);
+}
+
+.flatpickr-day.selected, 
+.flatpickr-day.startRange, 
+.flatpickr-day.endRange, 
+.flatpickr-day.selected.continue, 
+.flatpickr-day.selected:hover, 
+.flatpickr-day.startRange:hover, 
+.flatpickr-day.endRange:hover, 
+.flatpickr-day.selected.prevMonthDay, 
+.flatpickr-day.selected.nextMonthDay, 
+.flatpickr-day.startRange.prevMonthDay, 
+.flatpickr-day.startRange.nextMonthDay, 
+.flatpickr-day.endRange.prevMonthDay, 
+.flatpickr-day.endRange.nextMonthDay {
+  background: #16a34a !important;
+  border-color: #16a34a !important;
+}

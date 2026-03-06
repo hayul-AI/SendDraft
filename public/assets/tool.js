@@ -258,6 +258,7 @@ function sd_init() {
     const ref = src.reference || "";
     const am = src.amount || "";
     const re = src.reason || "";
+    const time = src.time || "";
 
     // Base injections with fallbacks
     a.recipient = r || src.company || "";
@@ -268,28 +269,29 @@ function sd_init() {
     a.service = i || t || ref || ""; // Added explicit service
     a.reference = ref || t || i || "";
     a.date = d;
+    a.time = time;
     a.amount = am;
     a.reason = re;
     a.company = src.company || r || "";
     a.position = ref || "";
 
-    a.date_str = d ? ` on ${d}` : "";
-    a.date_str_firm = d ? ` on ${d}` : "";
-    a.date_str_neutral = d ? ` on ${d}` : "";
-    a.orig_date_str = d ? ` on ${d}` : "";
-    a.orig_date_plain = d ? ` on ${d}` : "";
-    a.orig_date_str_firm = d ? ` on ${d}` : "";
-    a.deadline_str = d ? ` by ${d}` : "";
-    a.deadline_plain = d ? ` by ${d}` : "";
-    a.deadline_str_firm = d ? ` by ${d}` : "";
-    a.pay_date_str = d ? ` by ${d}` : "";
+    a.date_str = d ? ` on ${d}${a.time_str}` : "";
+    a.date_str_firm = d ? ` on ${d}${a.time_str}` : "";
+    a.date_str_neutral = d ? ` on ${d}${a.time_str}` : "";
+    a.orig_date_str = d ? ` on ${d}${a.time_str}` : "";
+    a.orig_date_plain = d ? ` on ${d}${a.time_str}` : "";
+    a.orig_date_str_firm = d ? ` on ${d}${a.time_str}` : "";
+    a.deadline_str = d ? ` by ${d}${a.time_str}` : "";
+    a.deadline_plain = d ? ` by ${d}${a.time_str}` : "";
+    a.deadline_str_firm = d ? ` by ${d}${a.time_str}` : "";
+    a.pay_date_str = d ? ` by ${d}${a.time_str}` : "";
     a.pay_date = d;
     a.start_str = d ? String(d).split(/[~|-]|to|until/)[0].trim() : "";
     a.end_str = d && String(d).match(/[~|-]|to|until/) ? String(d).split(/[~|-]|to|until/)[1].trim() : "";
-    a.time_str = d ? ` at ${d}` : "";
-    a.window_str = d ? ` within ${d}` : "";
-    a.window_str_firm = d ? ` within ${d}` : "";
-    a.lent_date_str = d ? ` on ${d}` : "";
+    a.time_str = time ? ` at ${time}` : (d && d.includes(':') ? ` at ${d}` : "");
+    a.window_str = d ? ` within ${d}${a.time_str}` : "";
+    a.window_str_firm = d ? ` within ${d}${a.time_str}` : "";
+    a.lent_date_str = d ? ` on ${d}${a.time_str}` : "";
     a.req_date = d;
     a.new_date = d;
 
